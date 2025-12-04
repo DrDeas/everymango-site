@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | EveryMango</title>
+    <meta name="description" content="EveryMango Terms of Service - The rules and guidelines for using our ADHD-friendly productivity app.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FFF8F0;
+            --mango-orange: #E07B39;
+            --mango-light: #F5A962;
+            --sanctuary-sage: #7A9E7E;
+            --soft-charcoal: #4A4A4A;
+            --warm-gray: #8B8680;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--cream);
+            color: var(--soft-charcoal);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--soft-charcoal);
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .logo-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--mango-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--soft-charcoal);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--mango-orange);
+        }
+
+        /* Main Content */
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 2.5rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .effective-date {
+            color: var(--warm-gray);
+            font-size: 1rem;
+        }
+
+        /* Sections */
+        .intro {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .intro p {
+            margin-bottom: 1rem;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.5rem;
+            color: var(--mango-orange);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--cream);
+        }
+
+        h3 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.15rem;
+            color: var(--soft-charcoal);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        h3:first-of-type {
+            margin-top: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Legal Emphasis */
+        .legal-emphasis {
+            background: #FEF3E7;
+            border-left: 4px solid var(--mango-orange);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: linear-gradient(135deg, var(--mango-orange) 0%, var(--mango-light) 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-info h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .contact-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-label {
+            font-weight: 700;
+        }
+
+        /* Footer Note */
+        .footer-note {
+            text-align: center;
+            padding: 2rem;
+            color: var(--warm-gray);
+            font-style: italic;
+        }
+
+        .tagline {
+            color: var(--mango-orange);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--soft-charcoal);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--mango-light);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .content-container {
+                padding: 2rem 1rem 3rem;
+            }
+
+            section, .intro {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🥭</span>
+                <span class="logo-text">EveryMango</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-container">
+        <header class="page-header">
+            <h1>Terms of Service</h1>
+            <p class="effective-date">Effective Date: December 1, 2025</p>
+        </header>
+
+        <div class="intro">
+            <p>Welcome to EveryMango! These Terms of Service ("Terms") govern your access to and use of the EveryMango application and website (collectively, the "Service"). Please read these Terms carefully before using our Service.</p>
+            <p>By accessing or using EveryMango, you agree to be bound by these Terms. If you do not agree to these Terms, you may not access or use the Service.</p>
+        </div>
+
+        <section>
+            <h2>1. Acceptance of Terms</h2>
+            <p>By creating an account or using EveryMango, you represent that you are at least 13 years of age, you have the legal capacity to enter into a binding agreement, and you agree to comply with these Terms and all applicable laws and regulations. If you are using the Service on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.</p>
+        </section>
+
+        <section>
+            <h2>2. Description of Service</h2>
+            <p>EveryMango is an ADHD-friendly project management application designed to help users manage tasks, projects, and productivity in a supportive, judgment-free environment. The Service includes features such as task and project management with boards, groups, and customizable workflows; Brain Dump for quick thought capture; Focus Mode and Quick Wins filtering; No-Judgment Mode for reduced pressure; Someday/Maybe boards for parking non-urgent ideas; Pomodoro timer integration; time budget visualization and tracking; team management capabilities; and cross-device synchronization through cloud storage.</p>
+        </section>
+
+        <section>
+            <h2>3. User Accounts</h2>
+            
+            <h3>3.1 Account Creation</h3>
+            <p>To use EveryMango, you must sign in using your Google account. This is an intentional design choice to simplify the authentication process and reduce cognitive load. By signing in, you authorize us to access basic profile information from your Google account as described in our Privacy Policy.</p>
+
+            <h3>3.2 Account Security</h3>
+            <p>You are responsible for maintaining the security of your Google account, which controls access to EveryMango. You agree to notify us immediately of any unauthorized use of your account. We are not liable for any loss or damage arising from unauthorized access to your account.</p>
+
+            <h3>3.3 Account Termination</h3>
+            <p>You may discontinue using EveryMango at any time. You may request deletion of your account and associated data by contacting us at support@everymango.com. We reserve the right to suspend or terminate your account if you violate these Terms.</p>
+        </section>
+
+        <section>
+            <h2>4. User Content</h2>
+            
+            <h3>4.1 Your Content</h3>
+            <p>You retain ownership of all content you create within EveryMango, including tasks, notes, boards, and any other data you input ("User Content"). By using the Service, you grant us a limited license to store, process, and display your User Content solely for the purpose of providing the Service to you.</p>
+
+            <h3>4.2 Content Restrictions</h3>
+            <p>You agree not to use EveryMango to store, transmit, or share content that is illegal, harmful, threatening, abusive, harassing, defamatory, or otherwise objectionable; infringes on any patent, trademark, copyright, or other intellectual property rights; contains malware, viruses, or other harmful code; or violates the privacy or publicity rights of any third party.</p>
+
+            <h3>4.3 Data Backup</h3>
+            <p>While we implement measures to protect and preserve your data, you acknowledge that you are responsible for maintaining your own backup copies of important information. We are not liable for any loss of User Content.</p>
+        </section>
+
+        <section>
+            <h2>5. Acceptable Use</h2>
+            <p>You agree to use EveryMango only for lawful purposes and in accordance with these Terms. You agree not to: use the Service in any way that violates applicable laws or regulations; attempt to gain unauthorized access to any portion of the Service or any other systems or networks; interfere with or disrupt the integrity or performance of the Service; attempt to reverse engineer, decompile, or disassemble any portion of the Service; use automated means (bots, scrapers, etc.) to access the Service without our permission; or impersonate any person or entity or misrepresent your affiliation with any person or entity.</p>
+        </section>
+
+        <section>
+            <h2>6. Intellectual Property</h2>
+            
+            <h3>6.1 Our Intellectual Property</h3>
+            <p>The Service, including its design, features, functionality, and content (excluding User Content), is owned by EveryMango and is protected by copyright, trademark, and other intellectual property laws. The EveryMango name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of EveryMango.</p>
+
+            <h3>6.2 Limited License</h3>
+            <p>We grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Service for your personal or internal business purposes, subject to these Terms. This license does not include the right to modify, distribute, or create derivative works based on the Service.</p>
+        </section>
+
+        <section>
+            <h2>7. Third-Party Services</h2>
+            <p>EveryMango integrates with and relies upon third-party services, including Google Firebase for authentication and data storage, and Google Sign-In for user authentication. Your use of these third-party services is subject to their respective terms of service and privacy policies. We are not responsible for the availability, reliability, or performance of third-party services.</p>
+        </section>
+
+        <section>
+            <h2>8. Service Availability and Modifications</h2>
+            
+            <h3>8.1 Availability</h3>
+            <p>We strive to provide reliable access to EveryMango, but we do not guarantee that the Service will be available at all times. The Service may be subject to interruptions, delays, or errors due to maintenance, updates, or circumstances beyond our control.</p>
+
+            <h3>8.2 Modifications</h3>
+            <p>We reserve the right to modify, suspend, or discontinue any aspect of the Service at any time, with or without notice. We may also update these Terms from time to time. Continued use of the Service after any changes constitutes your acceptance of the modified Terms.</p>
+        </section>
+
+        <section>
+            <h2>9. Disclaimer of Warranties</h2>
+            <div class="legal-emphasis">
+                <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE, OR THAT ANY DEFECTS WILL BE CORRECTED.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>10. Limitation of Liability</h2>
+            <div class="legal-emphasis">
+                <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL EVERYMANGO, ITS OWNERS, OPERATORS, AFFILIATES, OR LICENSORS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, ARISING OUT OF OR RELATED TO YOUR USE OF OR INABILITY TO USE THE SERVICE. OUR TOTAL LIABILITY FOR ANY CLAIMS ARISING FROM THESE TERMS OR YOUR USE OF THE SERVICE SHALL NOT EXCEED THE AMOUNT YOU PAID TO US, IF ANY, IN THE TWELVE MONTHS PRECEDING THE CLAIM.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>11. Indemnification</h2>
+            <p>You agree to indemnify, defend, and hold harmless EveryMango and its owners, operators, affiliates, licensors, and service providers from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, or fees (including reasonable attorneys' fees) arising out of or relating to your violation of these Terms or your use of the Service.</p>
+        </section>
+
+        <section>
+            <h2>12. Governing Law and Dispute Resolution</h2>
+            <p>These Terms shall be governed by and construed in accordance with the laws of the State of Georgia, United States, without regard to its conflict of law provisions. Any dispute arising from or relating to these Terms or the Service shall be resolved through binding arbitration in accordance with the rules of the American Arbitration Association, unless you opt out of arbitration within 30 days of first using the Service by contacting us at legal@everymango.com.</p>
+        </section>
+
+        <section>
+            <h2>13. Severability</h2>
+            <p>If any provision of these Terms is held to be invalid, illegal, or unenforceable, the remaining provisions shall continue in full force and effect. The invalid provision shall be modified to the minimum extent necessary to make it valid and enforceable while preserving its original intent.</p>
+        </section>
+
+        <section>
+            <h2>14. Entire Agreement</h2>
+            <p>These Terms, together with our <a href="/privacy">Privacy Policy</a>, constitute the entire agreement between you and EveryMango regarding your use of the Service and supersede all prior and contemporaneous understandings, agreements, representations, and warranties.</p>
+        </section>
+
+        <section class="contact-info">
+            <h2>15. Contact Information</h2>
+            <p>If you have any questions about these Terms of Service, please contact us:</p>
+            <p class="contact-item"><span class="contact-label">Email:</span> <a href="mailto:legal@everymango.com">legal@everymango.com</a></p>
+            <p class="contact-item"><span class="contact-label">Support:</span> <a href="mailto:support@everymango.com">support@everymango.com</a></p>
+            <p class="contact-item"><span class="contact-label">Website:</span> <a href="https://everymango.com">everymango.com</a></p>
+        </section>
+
+        <div class="footer-note">
+            <p>Thank you for choosing EveryMango to support your productivity journey.</p>
+            <p class="tagline">Ripen at your own pace. 🥭</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="mailto:hello@everymango.com">Contact</a>
+        </div>
+        <p class="copyright">© 2024 EveryMango. All rights reserved.</p>
+    </footer>
+</body>
+</html>
