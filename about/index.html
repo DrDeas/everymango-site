@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | EveryMango</title>
+    <meta name="description" content="Learn about EveryMango - the ADHD-friendly project management app built with love for brains that work differently.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --mango-blush: #D94E41;
+            --warm-red: #E85D4A;
+            --ripe-mango: #F4A259;
+            --deep-gold: #F9A825;
+            --golden-flesh: #F8C56D;
+            --sunny-yellow: #F8D54C;
+            --mango-leaf: #6B8E6B;
+            --sanctuary-sage: #A8B5A0;
+            --soft-charcoal: #4A4A4A;
+            --cream: #FDF6E9;
+            --cream-dark: #F5EDD8;
+            --linen: #EDE5D4;
+            --warm-gray: #9A9590;
+            --mango-light: #F8C56D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--soft-charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.3;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--cream);
+            border-bottom: 1px solid var(--linen);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--soft-charcoal);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--soft-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--mango-leaf);
+        }
+
+        /* Main Content */
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+            flex: 1;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--linen);
+        }
+
+        .page-header h1 {
+            font-size: 2.75rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .page-header .tagline {
+            font-size: 1.25rem;
+            color: var(--mango-leaf);
+            font-weight: 600;
+        }
+
+        /* Hero Story */
+        .hero-story {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--linen);
+            box-shadow: 0 4px 20px rgba(74, 74, 74, 0.05);
+        }
+
+        .hero-story h2 {
+            font-size: 1.75rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hero-story h2 i {
+            color: var(--ripe-mango);
+        }
+
+        .hero-story p {
+            margin-bottom: 1.25rem;
+            font-size: 1.05rem;
+        }
+
+        .hero-story p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-quote {
+            background: linear-gradient(135deg, rgba(244, 162, 89, 0.15), rgba(248, 197, 109, 0.15));
+            border-left: 4px solid var(--ripe-mango);
+            padding: 1.5rem 2rem;
+            border-radius: 0 16px 16px 0;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--soft-charcoal);
+        }
+
+        /* Mission Section */
+        .mission-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .mission-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--linen);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(74, 74, 74, 0.08);
+        }
+
+        .mission-card .icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 24px;
+        }
+
+        .mission-card h3 {
+            font-size: 1.25rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .mission-card p {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: linear-gradient(135deg, var(--mango-leaf), #5A7A5A);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: white;
+        }
+
+        .values-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .value-item {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .value-item .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .value-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-item p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        /* Why Mango */
+        .mango-section {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--linen);
+        }
+
+        .mango-section h2 {
+            font-size: 1.75rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .mango-reasons {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .mango-reason {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.25rem;
+            background: var(--cream);
+            border-radius: 16px;
+        }
+
+        .mango-reason .icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .mango-reason h4 {
+            font-size: 1rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.35rem;
+        }
+
+        .mango-reason p {
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Contact CTA */
+        .contact-section {
+            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            border: 2px solid var(--linen);
+        }
+
+        .contact-section h2 {
+            font-size: 1.75rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-section p {
+            color: var(--warm-gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--mango-leaf);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(107, 142, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #5A7A5A;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            color: var(--soft-charcoal);
+            padding: 14px 28px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            border: 2px solid var(--linen);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--mango-leaf);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--soft-charcoal);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--mango-light);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .mission-section {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-container {
+                padding: 2rem 1rem 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero-story,
+            .mission-card,
+            .values-section,
+            .mango-section,
+            .contact-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🥭</span>
+                <span class="logo-text">EveryMango</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="mailto:hello@everymango.com">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-container">
+        <header class="page-header">
+            <h1>About EveryMango</h1>
+            <p class="tagline">Built with love for brains that work differently 🥭</p>
+        </header>
+
+        <div class="hero-story">
+            <h2><i class="fas fa-heart"></i> Our Story</h2>
+            <p>EveryMango was born from frustration — and hope. Like so many people with ADHD, we spent years bouncing between productivity apps, each one promising to finally "fix" our scattered brains. They all failed in the same way: red warning badges, guilt-inducing overdue counters, and systems designed for minds that think in straight lines.</p>
+            <p>Traditional project management tools aren't just unhelpful for ADHD minds — they're actively harmful. They amplify shame instead of reducing it. They add cognitive load instead of lightening it. They make us feel broken instead of different.</p>
+            
+            <div class="highlight-quote">
+                "We didn't need another app that yelled at us. We needed one that understood us."
+            </div>
+            
+            <p>So we built EveryMango: a gentle, judgment-free space where your brain can work the way it actually works. Where "overdue" becomes "ready when you are." Where capturing a fleeting thought is as easy as hitting Enter. Where every small win gets celebrated, not ignored.</p>
+            <p>This isn't productivity through shame. It's productivity through kindness.</p>
+        </div>
+
+        <div class="mission-section">
+            <div class="mission-card">
+                <div class="icon" style="background: rgba(244, 162, 89, 0.2);">
+                    <i class="fas fa-bullseye" style="color: var(--ripe-mango);"></i>
+                </div>
+                <h3>Our Mission</h3>
+                <p>To create tools that work with neurodivergent minds, not against them. We believe productivity should feel like sunshine, not punishment.</p>
+            </div>
+            <div class="mission-card">
+                <div class="icon" style="background: rgba(107, 142, 107, 0.15);">
+                    <i class="fas fa-eye" style="color: var(--mango-leaf);"></i>
+                </div>
+                <h3>Our Vision</h3>
+                <p>A world where ADHD is seen as a different way of thinking, not a deficiency. Where tools adapt to humans, not the other way around.</p>
+            </div>
+            <div class="mission-card">
+                <div class="icon" style="background: rgba(248, 197, 109, 0.25);">
+                    <i class="fas fa-users" style="color: var(--golden-flesh);"></i>
+                </div>
+                <h3>Who We Serve</h3>
+                <p>Anyone whose brain works a little differently — ADHD, anxiety, autism, or just "not neurotypical." You're not broken. You're a mango.</p>
+            </div>
+            <div class="mission-card">
+                <div class="icon" style="background: rgba(168, 181, 160, 0.25);">
+                    <i class="fas fa-seedling" style="color: var(--sanctuary-sage);"></i>
+                </div>
+                <h3>Our Approach</h3>
+                <p>Every feature is designed with gentleness first. Soft language. Warm colors. Forgiving systems. Because your environment shapes your success.</p>
+            </div>
+        </div>
+
+        <div class="values-section">
+            <h2>What We Believe</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <div class="emoji">💚</div>
+                    <h4>Kindness Over Productivity</h4>
+                    <p>Being gentle with yourself isn't lazy — it's strategic.</p>
+                </div>
+                <div class="value-item">
+                    <div class="emoji">🌱</div>
+                    <h4>Progress Over Perfection</h4>
+                    <p>Small wins compound. One task done is infinitely more than zero.</p>
+                </div>
+                <div class="value-item">
+                    <div class="emoji">🧠</div>
+                    <h4>Different, Not Broken</h4>
+                    <p>ADHD brains aren't defective — they just need different tools.</p>
+                </div>
+                <div class="value-item">
+                    <div class="emoji">☀️</div>
+                    <h4>Warmth Wins</h4>
+                    <p>Environments matter. Warm colors, soft language, gentle design.</p>
+                </div>
+                <div class="value-item">
+                    <div class="emoji">🔄</div>
+                    <h4>Fresh Starts Always</h4>
+                    <p>Yesterday is gone. Every morning is a new harvest.</p>
+                </div>
+                <div class="value-item">
+                    <div class="emoji">✨</div>
+                    <h4>Celebrate Everything</h4>
+                    <p>Finished a quick task? That's worth celebrating.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mango-section">
+            <h2>🥭 Why "EveryMango"?</h2>
+            <div class="mango-reasons">
+                <div class="mango-reason">
+                    <div class="icon">🕐</div>
+                    <div>
+                        <h4>Mangoes ripen on their own timeline</h4>
+                        <p>You can't rush a mango. It ripens when the conditions are right — warmth, patience, time. Just like you. You're not behind; you're ripening.</p>
+                    </div>
+                </div>
+                <div class="mango-reason">
+                    <div class="icon">🌴</div>
+                    <div>
+                        <h4>Environment shapes growth</h4>
+                        <p>Mangoes don't grow in frost. They need tropical warmth. So do you. Harsh productivity culture is frost — we create the climate where you can flourish.</p>
+                    </div>
+                </div>
+                <div class="mango-reason">
+                    <div class="icon">🫠</div>
+                    <div>
+                        <h4>The mess is part of the magic</h4>
+                        <p>There's no "clean" way to eat a mango. Juice runs everywhere. Your process is messy too — and the output can still be extraordinary.</p>
+                    </div>
+                </div>
+                <div class="mango-reason">
+                    <div class="icon">✨</div>
+                    <div>
+                        <h4>Every mango is unique</h4>
+                        <p>Mangoes aren't uniform. They're lumpy, asymmetrical, beautifully irregular. Cookie-cutter systems don't fit irregular shapes — like us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h2>Let's Connect</h2>
+            <p>Have questions, feedback, or just want to say hello? We'd love to hear from you.</p>
+            <div class="contact-buttons">
+                <a href="mailto:hello@everymango.com" class="btn-primary">
+                    <i class="fas fa-envelope"></i> Say Hello
+                </a>
+                <a href="/" class="btn-secondary">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="mailto:hello@everymango.com">Contact</a>
+        </div>
+        <p class="copyright">© 2025 EveryMango. Made with 💚 for brains that work differently.</p>
+    </footer>
+</body>
+</html>
