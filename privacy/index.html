@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | EveryMango</title>
+    <meta name="description" content="EveryMango Privacy Policy - Learn how we collect, use, and protect your data.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FFF8F0;
+            --mango-orange: #E07B39;
+            --mango-light: #F5A962;
+            --sanctuary-sage: #7A9E7E;
+            --soft-charcoal: #4A4A4A;
+            --warm-gray: #8B8680;
+            --card-bg: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--cream);
+            color: var(--soft-charcoal);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--soft-charcoal);
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .logo-text {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--mango-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--soft-charcoal);
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--mango-orange);
+        }
+
+        /* Main Content */
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+        }
+
+        /* Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 2.5rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .effective-date {
+            color: var(--warm-gray);
+            font-size: 1rem;
+        }
+
+        /* Sections */
+        .intro {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .intro p {
+            margin-bottom: 1rem;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.5rem;
+            color: var(--mango-orange);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--cream);
+        }
+
+        h3 {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.15rem;
+            color: var(--soft-charcoal);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        h3:first-of-type {
+            margin-top: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: linear-gradient(135deg, var(--mango-orange) 0%, var(--mango-light) 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .contact-info h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .contact-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-label {
+            font-weight: 700;
+        }
+
+        /* Footer Note */
+        .footer-note {
+            text-align: center;
+            padding: 2rem;
+            color: var(--warm-gray);
+            font-style: italic;
+        }
+
+        .tagline {
+            color: var(--mango-orange);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--soft-charcoal);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--mango-light);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .content-container {
+                padding: 2rem 1rem 3rem;
+            }
+
+            section, .intro {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🥭</span>
+                <span class="logo-text">EveryMango</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/privacy">Privacy</a>
+                <a href="/terms">Terms</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-container">
+        <header class="page-header">
+            <h1>Privacy Policy</h1>
+            <p class="effective-date">Effective Date: December 1, 2025</p>
+        </header>
+
+        <div class="intro">
+            <p>Welcome to EveryMango! This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our ADHD-friendly project management application. We are committed to protecting your privacy and handling your data with care and transparency.</p>
+            <p>By using EveryMango, you agree to the collection and use of information in accordance with this policy. If you do not agree with the terms of this Privacy Policy, please do not access or use the application.</p>
+        </div>
+
+        <section>
+            <h2>1. Information We Collect</h2>
+            
+            <h3>1.1 Information You Provide</h3>
+            <p>When you use EveryMango, you may provide us with certain information, including: your Google account information (name, email address, and profile picture) when you sign in using Google Authentication; task and project data you create within the application such as board names, group names, task descriptions, due dates, priorities, and notes; team member information including names, email addresses, roles, and profile photos you choose to upload; time management data including time estimates, Pomodoro session data, and time blocking information; personal preferences and settings such as Focus Mode preferences, No-Judgment Mode settings, and notification preferences; and the "Why It Matters" motivational notes you add to your tasks.</p>
+
+            <h3>1.2 Information Collected Automatically</h3>
+            <p>When you access EveryMango, we may automatically collect certain information, including: device information such as your device type, operating system, and browser type; usage data including features used, time spent in the application, and interaction patterns; and log data such as access times, pages viewed, and referring URLs.</p>
+
+            <h3>1.3 Google Sign-In</h3>
+            <p>EveryMango uses Google Sign-In as its sole authentication method. This is an intentional design choice to reduce cognitive load for our users—one-click login with no passwords to remember. When you authenticate, we receive basic profile information from Google including your name, email address, and profile picture. We do not have access to your Google password or other Google account data.</p>
+        </section>
+
+        <section>
+            <h2>2. How We Use Your Information</h2>
+            <p>We use the information we collect for the following purposes: to provide, operate, and maintain the EveryMango application; to personalize your experience and remember your preferences; to sync your data across devices when you are signed in; to improve and optimize our application based on usage patterns; to communicate with you about updates, new features, or support requests; to protect against unauthorized access and ensure data security; and to comply with legal obligations.</p>
+        </section>
+
+        <section>
+            <h2>3. Data Storage and Security</h2>
+            
+            <h3>3.1 Where Your Data Is Stored</h3>
+            <p>Your data is stored using Google Firebase/Firestore, a secure cloud database service. Data is stored in the United States (us-central1 region). Firebase implements industry-standard security measures to protect your information.</p>
+
+            <h3>3.2 Data Isolation</h3>
+            <p>EveryMango implements strict data isolation through Firebase Security Rules. Each user can only access their own data—no user can view, modify, or delete another user's boards, tasks, or personal information. This isolation is enforced at the database level.</p>
+
+            <h3>3.3 Security Measures</h3>
+            <p>We implement appropriate technical and organizational measures to protect your personal information, including: encrypted data transmission using HTTPS/TLS; Firebase Authentication for secure user identity verification; Firestore Security Rules that restrict data access to authenticated users; and regular security reviews of our application code.</p>
+        </section>
+
+        <section>
+            <h2>4. Data Sharing and Disclosure</h2>
+            <p>We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances: with service providers (specifically Google/Firebase) who help us operate our application and who are bound by contractual obligations to keep personal information confidential; if required by law, such as to comply with a subpoena or similar legal process; to protect our rights, privacy, safety, or property, or that of our users or the public; and in connection with a merger, acquisition, or sale of assets, in which case you will be notified via email or prominent notice on our website.</p>
+        </section>
+
+        <section>
+            <h2>5. Your Rights and Choices</h2>
+            <p>You have the following rights regarding your personal information: <strong>Access and Portability</strong>—you can access your data at any time through the application and export your information; <strong>Correction</strong>—you can update or correct your personal information within the application; <strong>Deletion</strong>—you can delete your tasks, boards, and account data, and you may request complete deletion of your account and all associated data by contacting us; and <strong>Opt-Out</strong>—you can adjust notification settings within the application.</p>
+        </section>
+
+        <section>
+            <h2>6. Children's Privacy</h2>
+            <p>EveryMango is not intended for use by children under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected personal information from a child under 13, we will take steps to delete such information promptly. If you are a parent or guardian and believe your child has provided us with personal information, please contact us.</p>
+        </section>
+
+        <section>
+            <h2>7. Third-Party Services</h2>
+            <p>EveryMango uses the following third-party services: Google Firebase for authentication, database storage, and hosting; and Google Sign-In for user authentication. These services have their own privacy policies, and we encourage you to review them. We are not responsible for the privacy practices of these third-party services.</p>
+        </section>
+
+        <section>
+            <h2>8. Cookies and Local Storage</h2>
+            <p>EveryMango may use local storage and cookies for: maintaining your authentication session; storing user preferences such as Focus Mode and No-Judgment Mode settings; and improving application performance. You can control cookie settings through your browser, but disabling cookies may affect application functionality.</p>
+        </section>
+
+        <section>
+            <h2>9. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new Privacy Policy on this page and updating the "Effective Date" at the top. We encourage you to review this Privacy Policy periodically for any changes. Your continued use of EveryMango after any modifications indicates your acceptance of the updated Privacy Policy.</p>
+        </section>
+
+        <section class="contact-info">
+            <h2>10. Contact Us</h2>
+            <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
+            <p class="contact-item"><span class="contact-label">Email:</span> <a href="mailto:privacy@everymango.com">privacy@everymango.com</a></p>
+            <p class="contact-item"><span class="contact-label">Support:</span> <a href="mailto:support@everymango.com">support@everymango.com</a></p>
+            <p class="contact-item"><span class="contact-label">Website:</span> <a href="https://everymango.com">everymango.com</a></p>
+        </section>
+
+        <div class="footer-note">
+            <p>Thank you for trusting EveryMango with your productivity journey.</p>
+            <p class="tagline">Ripen at your own pace. 🥭</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
+            <a href="mailto:hello@everymango.com">Contact</a>
+        </div>
+        <p class="copyright">© 2024 EveryMango. All rights reserved.</p>
+    </footer>
+</body>
+</html>
