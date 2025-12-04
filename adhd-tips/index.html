@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADHD Tips | EveryMango</title>
+    <meta name="description" content="Practical, judgment-free ADHD productivity tips from EveryMango. Strategies that actually work for neurodivergent minds.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --mango-blush: #D94E41;
+            --warm-red: #E85D4A;
+            --ripe-mango: #F4A259;
+            --deep-gold: #F9A825;
+            --golden-flesh: #F8C56D;
+            --sunny-yellow: #F8D54C;
+            --mango-leaf: #6B8E6B;
+            --sanctuary-sage: #A8B5A0;
+            --soft-charcoal: #4A4A4A;
+            --cream: #FDF6E9;
+            --cream-dark: #F5EDD8;
+            --linen: #EDE5D4;
+            --warm-gray: #9A9590;
+            --mango-light: #F8C56D;
+            --lavender: #c4b8d8;
+            --aqua: #a8d8d8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--soft-charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.3;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--cream);
+            border-bottom: 1px solid var(--linen);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--soft-charcoal);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--soft-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--mango-leaf);
+        }
+
+        /* Main Content */
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+            flex: 1;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--linen);
+        }
+
+        .page-header h1 {
+            font-size: 2.75rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .page-header .tagline {
+            font-size: 1.15rem;
+            color: var(--warm-gray);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            background: linear-gradient(135deg, rgba(244, 162, 89, 0.15), rgba(248, 197, 109, 0.15));
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(244, 162, 89, 0.3);
+        }
+
+        .intro-section p {
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        .intro-section strong {
+            color: var(--mango-leaf);
+        }
+
+        /* Category Sections */
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .category-header h2 {
+            font-size: 1.5rem;
+            color: var(--soft-charcoal);
+        }
+
+        /* Tip Cards */
+        .tips-grid {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .tip-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.75rem;
+            border: 1px solid var(--linen);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(74, 74, 74, 0.08);
+        }
+
+        .tip-card h3 {
+            font-size: 1.15rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tip-card h3 .emoji {
+            font-size: 1.25rem;
+        }
+
+        .tip-card p {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .tip-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tip-highlight {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--mango-leaf);
+        }
+
+        .tip-highlight strong {
+            color: var(--mango-leaf);
+        }
+
+        /* Quick Tips Banner */
+        .quick-tips-banner {
+            background: linear-gradient(135deg, var(--mango-leaf), #5A7A5A);
+            border-radius: 24px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            color: white;
+        }
+
+        .quick-tips-banner h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .quick-tips-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .quick-tip {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .quick-tip .number {
+            background: rgba(255, 255, 255, 0.2);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .quick-tip p {
+            font-size: 0.9rem;
+            opacity: 0.95;
+        }
+
+        /* Mango Wisdom */
+        .mango-wisdom {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            border: 2px solid var(--golden-flesh);
+            text-align: center;
+        }
+
+        .mango-wisdom .emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .mango-wisdom h3 {
+            font-size: 1.35rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .mango-wisdom p {
+            color: var(--warm-gray);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mango-wisdom .tagline {
+            font-style: italic;
+            color: var(--ripe-mango);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            border: 2px solid var(--linen);
+        }
+
+        .cta-section h2 {
+            font-size: 1.75rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-section p {
+            color: var(--warm-gray);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--mango-leaf);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 18px;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(107, 142, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #5A7A5A;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--soft-charcoal);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--mango-light);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .quick-tips-list {
+                grid-template-columns: 1fr;
+            }
+
+            .content-container {
+                padding: 2rem 1rem 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .category-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🥭</span>
+                <span class="logo-text">EveryMango</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="mailto:hello@everymango.com">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-container">
+        <header class="page-header">
+            <h1>ADHD Tips & Strategies</h1>
+            <p class="tagline">Practical, judgment-free strategies for brains that work differently. No shame, just helpful ideas. 🧠</p>
+        </header>
+
+        <div class="intro-section">
+            <p>These tips come from lived experience, ADHD research, and our community. <strong>Not every strategy works for every brain</strong> — take what serves you, leave what doesn't. There's no "right" way to be productive.</p>
+        </div>
+
+        <!-- Quick Tips Banner -->
+        <div class="quick-tips-banner">
+            <h2>⚡ Quick Wins When You're Stuck</h2>
+            <div class="quick-tips-list">
+                <div class="quick-tip">
+                    <span class="number">1</span>
+                    <p>Set a 2-minute timer. Do anything for just 2 minutes. Often, starting is the hardest part.</p>
+                </div>
+                <div class="quick-tip">
+                    <span class="number">2</span>
+                    <p>Change your location. Move to a different room, a coffee shop, or just a different chair.</p>
+                </div>
+                <div class="quick-tip">
+                    <span class="number">3</span>
+                    <p>Body double. Work alongside someone (in person or virtually) — even if they're doing something different.</p>
+                </div>
+                <div class="quick-tip">
+                    <span class="number">4</span>
+                    <p>Make it tiny. Break the task into the smallest possible step. "Write report" → "Open document."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Getting Started Section -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon" style="background: rgba(244, 162, 89, 0.2);">
+                    <i class="fas fa-play" style="color: var(--ripe-mango);"></i>
+                </div>
+                <h2>Getting Started (The Hardest Part)</h2>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><span class="emoji">🎯</span> The "Just Open It" Rule</h3>
+                    <p>Don't commit to doing the task. Just commit to opening the document, app, or email. That's it. Often, once you've opened it, momentum kicks in.</p>
+                    <div class="tip-highlight">
+                        <strong>Try this:</strong> Say "I'm just going to look at it" — removing the pressure to perform often makes starting easier.
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="emoji">⏱️</span> The Pomodoro Technique</h3>
+                    <p>Work for 25 minutes, break for 5. Repeat. The time constraint creates urgency, and knowing a break is coming makes starting less daunting.</p>
+                    <div class="tip-highlight">
+                        <strong>Pro tip:</strong> If 25 minutes feels too long, start with 10 or 15. There are no rules — just frameworks to experiment with.
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="emoji">🎵</span> Transition Rituals</h3>
+                    <p>Create a "start work" ritual: play a specific song, make a cup of tea, do 10 jumping jacks. The ritual signals your brain that it's time to shift modes.</p>
+                    <div class="tip-highlight">
+                        <strong>Why it works:</strong> ADHD brains struggle with transitions. Rituals create a bridge between states.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Managing Tasks Section -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon" style="background: rgba(107, 142, 107, 0.15);">
+                    <i class="fas fa-list-check" style="color: var(--mango-leaf);"></i>
+                </div>
+                <h2>Managing Tasks Without Overwhelm</h2>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><span class="emoji">🧠</span> Brain Dump Everything</h3>
+                    <p>Don't try to organize while capturing. Get every thought, task, and worry out of your head first. Sort later when you have bandwidth.</p>
+                    <div class="tip-highlight">
+                        <strong>EveryMango feature:</strong> Our Brain Dump bar is always visible — capture instantly, organize when ready.
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="emoji">⚡</span> Quick Wins First</h3>
+                    <p>On low-energy days, filter for tasks under 15 minutes. Completing small things builds momentum and dopamine, making bigger tasks feel more approachable.</p>
+                    <div class="tip-highlight">
+                        <strong>Remember:</strong> One small task done > ten big tasks paralyzed over.
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="emoji">🔮</span> "Someday / Maybe" Lists</h3>
+                    <p>Not everything needs to be done now. Create a parking lot for ideas and tasks that aren't urgent. They're not forgotten — just ripening.</p>
+                    <div class="tip-highlight">
+                        <strong>Key insight:</strong> Removing non-urgent items from your active view reduces decision fatigue.
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="emoji">💡</span> The "Why It Matters" Anchor</h3>
+                    <p>For each important task, write why it matters to you personally. When executive function fails, connecting to deeper motivation can be the spark that gets you moving.</p>
+                    <div class="tip-highlight">
+                        <strong>Example:</strong> "Finish budget report" → "So I can feel confident in the meeting and reduce my Sunday-night anxiety."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Energy Management Section -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon" style="background: rgba(196, 184, 216, 0.3);">
+                    <i class="fas fa-battery-half" style="color: #9a8ab8;"></i>
+                </div>
+                <h2>Working With Your Energy</h2>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><span class="emoji">🌡️</span> Energy-Match Your Tasks</h3>
+                    <p>Tag tasks by energy required (low, medium, high). On tired days, do low-energy tasks. Save high-energy work for when you're feeling sharp.</p>
+                    <div class="tip-highlight">
+                        <strong>Low-energy tasks:</strong> filing, email replies, organizing, admin work.<br>
+                        <strong>High-energy tasks:</strong> creative work, complex decisions, difficult conversations.
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="emoji">🌊</span> Ride the Hyperfocus Waves</h3>
+                    <p>When hyperfocus hits, ride it. Don't fight the flow to "be balanced." You can balance later. Hyperfocus is a superpower when directed well.</p>
+                    <div class="tip-highlight">
+                        <strong>Caution:</strong> Set a gentle alarm to remind yourself to eat, drink water, and stretch during long sessions.
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="emoji">🔋</span> Rest Is Productive</h3>
+                    <p>Your brain needs recovery time. Rest isn't laziness — it's maintenance. You can't run a car on empty, and you can't run a brain on empty either.</p>
+                    <div class="tip-highlight">
+                        <strong>Reframe:</strong> "I'm resting so I can work better later" — not "I'm failing by not working."
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Environment Section -->
+        <div class="category-section">
+            <div class="category-header">
+                <div class="category-icon" style="background: rgba(168, 216, 216, 0.3);">
+                    <i class="fas fa-home" style="color: #5a9a9a;"></i>
+                </div>
+                <h2>Optimizing Your Environment</h2>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h3><span class="emoji">👀</span> Out of Sight, Out of Mind</h3>
+                    <p>ADHD brains have weak "working memory." Put things where you'll see them: notes on the bathroom mirror, keys by the door, visual reminders everywhere.</p>
+                    <div class="tip-highlight">
+                        <strong>The flip side:</strong> Remove distractions from your workspace. If you can see your phone, you'll pick it up.
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="emoji">🎧</span> Background Noise Hacks</h3>
+                    <p>Many ADHD brains focus better with background noise. Try lo-fi music, white noise, coffee shop ambiance, or video game soundtracks.</p>
+                    <div class="tip-highlight">
+                        <strong>Experiment:</strong> Some people need silence, some need chaos. Find your frequency.
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <h3><span class="emoji">📱</span> Phone in Another Room</h3>
+                    <p>Physical distance is the most effective app blocker. When your phone requires getting up, you're less likely to mindlessly check it.</p>
+                    <div class="tip-highlight">
+                        <strong>Alternative:</strong> Use app blockers, grayscale mode, or "focus mode" if your phone must be nearby.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mango Wisdom -->
+        <div class="mango-wisdom">
+            <div class="emoji">🥭</div>
+            <h3>A Gentle Reminder</h3>
+            <p>You are not lazy. You are not broken. You have a brain that works differently in a world designed for neurotypical minds. Every strategy you try, every adaptation you make, every day you show up — that's strength, not weakness.</p>
+            <p class="tagline">"Mangoes don't apologize for ripening at their own pace. Neither should you."</p>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2>Put These Tips Into Practice</h2>
+            <p>EveryMango was built with these principles baked in — Brain Dump, Quick Wins, Energy Levels, Gentle Mode, and more.</p>
+            <a href="/" class="btn-primary">
+                <i class="fas fa-play"></i> Try EveryMango Free
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/adhd-tips">ADHD Tips</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="mailto:hello@everymango.com">Contact</a>
+        </div>
+        <p class="copyright">© 2025 EveryMango. Made with 💚 for brains that work differently.</p>
+    </footer>
+</body>
+</html>
