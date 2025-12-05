@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community | EveryMango</title>
+    <meta name="description" content="Join the EveryMango community. Connect with other neurodivergent minds and get updates on new features.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --mango-blush: #D94E41;
+            --warm-red: #E85D4A;
+            --ripe-mango: #F4A259;
+            --deep-gold: #F9A825;
+            --golden-flesh: #F8C56D;
+            --sunny-yellow: #F8D54C;
+            --mango-leaf: #6B8E6B;
+            --sanctuary-sage: #A8B5A0;
+            --soft-charcoal: #4A4A4A;
+            --cream: #FDF6E9;
+            --cream-dark: #F5EDD8;
+            --linen: #EDE5D4;
+            --warm-gray: #9A9590;
+            --mango-light: #F8C56D;
+            --lavender: #c4b8d8;
+            --aqua: #a8d8d8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--soft-charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.3;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--cream);
+            border-bottom: 1px solid var(--linen);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--soft-charcoal);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--soft-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--mango-leaf);
+        }
+
+        /* Main Content */
+        .content-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 4rem 2rem 5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        .community-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-emoji {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .community-hero h1 {
+            font-size: 2.75rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .community-hero h1 span {
+            color: var(--mango-leaf);
+        }
+
+        .community-hero .tagline {
+            font-size: 1.25rem;
+            color: var(--warm-gray);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Coming Soon Badge */
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(244, 162, 89, 0.2);
+            color: var(--soft-charcoal);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .coming-soon-badge i {
+            color: var(--ripe-mango);
+        }
+
+        /* Newsletter Signup */
+        .newsletter-section {
+            background: white;
+            border-radius: 28px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid var(--linen);
+            box-shadow: 0 8px 32px rgba(74, 74, 74, 0.06);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .newsletter-section h2 {
+            font-size: 1.5rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter-section .subtitle {
+            color: var(--warm-gray);
+            margin-bottom: 1.75rem;
+            font-size: 1rem;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--warm-gray);
+        }
+
+        .signup-form input[type="email"] {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--linen);
+            border-radius: 16px;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--soft-charcoal);
+            transition: border-color 0.2s;
+        }
+
+        .signup-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--mango-leaf);
+        }
+
+        .signup-form input[type="email"]::placeholder {
+            color: var(--warm-gray);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--mango-leaf);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(107, 142, 107, 0.3);
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background: #5A7A5A;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(107, 142, 107, 0.4);
+        }
+
+        .privacy-note {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            margin-top: 1rem;
+        }
+
+        .privacy-note a {
+            color: var(--mango-leaf);
+            text-decoration: none;
+        }
+
+        .privacy-note a:hover {
+            text-decoration: underline;
+        }
+
+        /* Success Message (hidden by default) */
+        .success-message {
+            display: none;
+            background: rgba(107, 142, 107, 0.1);
+            border: 2px solid var(--mango-leaf);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-message .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .success-message h3 {
+            color: var(--mango-leaf);
+            margin-bottom: 0.5rem;
+        }
+
+        .success-message p {
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+        }
+
+        /* What to Expect */
+        .expectations {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .expectations h3 {
+            font-size: 1.1rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .expectation-list {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .expectation-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 1rem 1.25rem;
+            border-radius: 14px;
+            border: 1px solid var(--linen);
+        }
+
+        .expectation-item .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .expectation-item p {
+            color: var(--soft-charcoal);
+            font-size: 0.95rem;
+        }
+
+        .expectation-item strong {
+            color: var(--mango-leaf);
+        }
+
+        /* Mango Grove Visual */
+        .grove-visual {
+            margin-top: 3rem;
+            text-align: center;
+            opacity: 0.6;
+        }
+
+        .grove-visual .mangoes {
+            font-size: 2rem;
+            letter-spacing: 0.5rem;
+        }
+
+        .grove-visual p {
+            font-size: 0.85rem;
+            color: var(--warm-gray);
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--soft-charcoal);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--mango-light);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .community-hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-emoji {
+                font-size: 4rem;
+            }
+
+            .newsletter-section {
+                padding: 2rem;
+            }
+
+            .content-container {
+                padding: 3rem 1.5rem 4rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🥭</span>
+                <span class="logo-text">EveryMango</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="mailto:hello@everymango.com">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-container">
+        <div class="community-hero">
+            <div class="hero-emoji">🌳🥭🥭🥭🌳</div>
+            <span class="coming-soon-badge">
+                <i class="fas fa-seedling"></i>
+                Growing Soon
+            </span>
+            <h1>Community <span>coming soon</span></h1>
+            <p class="tagline">Join the Mango Grove list for future updates! Be the first to know when our community launches.</p>
+        </div>
+
+        <div class="newsletter-section">
+            <h2>Join the Mango Grove 🥭</h2>
+            <p class="subtitle">Get updates on community launch, new features, and ADHD-friendly tips.</p>
+            
+            <form class="signup-form" id="newsletter-form">
+                <div class="input-wrapper">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="your@email.com" required id="email-input">
+                </div>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Join the Grove
+                </button>
+            </form>
+            
+            <p class="privacy-note">No spam, ever. Unsubscribe anytime. <a href="/privacy">Privacy Policy</a></p>
+
+            <div class="success-message" id="success-message">
+                <div class="emoji">🥭✨</div>
+                <h3>You're in the Grove!</h3>
+                <p>We'll let you know when the community launches. In the meantime, happy ripening!</p>
+            </div>
+        </div>
+
+        <div class="expectations">
+            <h3>What to expect from the Mango Grove</h3>
+            <div class="expectation-list">
+                <div class="expectation-item">
+                    <div class="icon" style="background: rgba(244, 162, 89, 0.2);">
+                        <i class="fas fa-bell" style="color: var(--ripe-mango);"></i>
+                    </div>
+                    <p><strong>Feature updates</strong> — Be first to know about new tools and improvements</p>
+                </div>
+                <div class="expectation-item">
+                    <div class="icon" style="background: rgba(107, 142, 107, 0.15);">
+                        <i class="fas fa-lightbulb" style="color: var(--mango-leaf);"></i>
+                    </div>
+                    <p><strong>ADHD tips</strong> — Practical strategies delivered to your inbox</p>
+                </div>
+                <div class="expectation-item">
+                    <div class="icon" style="background: rgba(196, 184, 216, 0.3);">
+                        <i class="fas fa-users" style="color: #9a8ab8;"></i>
+                    </div>
+                    <p><strong>Community access</strong> — First invite when our community space launches</p>
+                </div>
+                <div class="expectation-item">
+                    <div class="icon" style="background: rgba(248, 197, 109, 0.25);">
+                        <i class="fas fa-gift" style="color: var(--golden-flesh);"></i>
+                    </div>
+                    <p><strong>Exclusive perks</strong> — Early access to new features before public release</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grove-visual">
+            <div class="mangoes">🥭🥭🥭🥭🥭</div>
+            <p>Every mango ripens together in the grove</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/community">Community</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="mailto:hello@everymango.com">Contact</a>
+        </div>
+        <p class="copyright">© 2025 EveryMango. Made with 💚 for brains that work differently.</p>
+    </footer>
+
+    <script>
+        // Simple form handling (you'll want to connect this to your email service)
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email-input').value;
+            const form = this;
+            const successMessage = document.getElementById('success-message');
+            
+            // Here you would typically send the email to your newsletter service
+            // For now, we'll just show the success message
+            
+            // Hide form, show success
+            form.style.display = 'none';
+            successMessage.classList.add('show');
+            
+            // You can integrate with services like:
+            // - Buttondown (simple, indie)
+            // - ConvertKit (creator-focused)
+            // - Mailchimp (popular, free tier)
+            // - Google Forms (free, simple)
+            
+            console.log('Email submitted:', email);
+        });
+    </script>
+</body>
+</html>
