@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | EveryMango</title>
+    <meta name="description" content="Get help with EveryMango. Find answers to common questions about features, your account, and troubleshooting.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --mango-blush: #D94E41;
+            --warm-red: #E85D4A;
+            --ripe-mango: #F4A259;
+            --deep-gold: #F9A825;
+            --golden-flesh: #F8C56D;
+            --sunny-yellow: #F8D54C;
+            --mango-leaf: #6B8E6B;
+            --sanctuary-sage: #A8B5A0;
+            --soft-charcoal: #4A4A4A;
+            --cream: #FDF6E9;
+            --cream-dark: #F5EDD8;
+            --linen: #EDE5D4;
+            --warm-gray: #9A9590;
+            --mango-light: #F8C56D;
+            --lavender: #c4b8d8;
+            --aqua: #a8d8d8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--soft-charcoal);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.3;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--cream);
+            border-bottom: 1px solid var(--linen);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--soft-charcoal);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .logo-icon {
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--soft-charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--mango-leaf);
+        }
+
+        /* Main Content */
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem;
+            flex: 1;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--linen);
+        }
+
+        .page-header h1 {
+            font-size: 2.75rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .page-header .tagline {
+            font-size: 1.15rem;
+            color: var(--warm-gray);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Search Box */
+        .search-box {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            border: 2px solid var(--linen);
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--mango-leaf);
+        }
+
+        .search-box i {
+            color: var(--warm-gray);
+            font-size: 1.1rem;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            font-family: inherit;
+            color: var(--soft-charcoal);
+            background: transparent;
+        }
+
+        .search-box input::placeholder {
+            color: var(--warm-gray);
+        }
+
+        /* Quick Links */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .quick-link {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid var(--linen);
+            transition: all 0.2s ease;
+        }
+
+        .quick-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 74, 74, 0.08);
+            border-color: var(--mango-leaf);
+        }
+
+        .quick-link .icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            font-size: 20px;
+        }
+
+        .quick-link h3 {
+            font-size: 0.95rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.25rem;
+        }
+
+        .quick-link p {
+            font-size: 0.8rem;
+            color: var(--warm-gray);
+        }
+
+        /* FAQ Categories */
+        .faq-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--linen);
+        }
+
+        .category-header .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .category-header h2 {
+            font-size: 1.35rem;
+            color: var(--soft-charcoal);
+        }
+
+        /* FAQ Items */
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 0.75rem;
+            border: 1px solid var(--linen);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: var(--cream);
+        }
+
+        .faq-question h3 {
+            font-size: 1rem;
+            color: var(--soft-charcoal);
+            font-weight: 600;
+        }
+
+        .faq-question .toggle-icon {
+            color: var(--warm-gray);
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-question .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--warm-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 0.75rem;
+        }
+
+        .faq-answer-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-answer-content strong {
+            color: var(--soft-charcoal);
+        }
+
+        .faq-answer-content ul {
+            margin: 0.75rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .faq-answer-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background: linear-gradient(135deg, var(--cream-dark), var(--cream));
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 2px solid var(--linen);
+            margin-top: 2rem;
+        }
+
+        .contact-cta h2 {
+            font-size: 1.5rem;
+            color: var(--soft-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-cta p {
+            color: var(--warm-gray);
+            margin-bottom: 1.25rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--mango-leaf);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(107, 142, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #5A7A5A;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--soft-charcoal);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--mango-light);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+
+            .content-container {
+                padding: 2rem 1rem 3rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .faq-question {
+                padding: 1rem 1.25rem;
+            }
+
+            .faq-answer-content {
+                padding: 0 1.25rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">🥭</span>
+                <span class="logo-text">EveryMango</span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="mailto:hello@everymango.com">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-container">
+        <header class="page-header">
+            <h1>Help Center</h1>
+            <p class="tagline">Find answers to common questions. We're here to help you ripen at your own pace. 🥭</p>
+        </header>
+
+        <!-- Search Box -->
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search for help..." id="faq-search">
+        </div>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+            <a href="#getting-started" class="quick-link">
+                <div class="icon" style="background: rgba(244, 162, 89, 0.2);">
+                    <i class="fas fa-rocket" style="color: var(--ripe-mango);"></i>
+                </div>
+                <h3>Getting Started</h3>
+                <p>New here? Start here!</p>
+            </a>
+            <a href="#features" class="quick-link">
+                <div class="icon" style="background: rgba(107, 142, 107, 0.15);">
+                    <i class="fas fa-star" style="color: var(--mango-leaf);"></i>
+                </div>
+                <h3>Features</h3>
+                <p>Learn how things work</p>
+            </a>
+            <a href="#account" class="quick-link">
+                <div class="icon" style="background: rgba(196, 184, 216, 0.3);">
+                    <i class="fas fa-user" style="color: #9a8ab8;"></i>
+                </div>
+                <h3>Account & Data</h3>
+                <p>Privacy and settings</p>
+            </a>
+        </div>
+
+        <!-- Getting Started -->
+        <div class="faq-category" id="getting-started">
+            <div class="category-header">
+                <div class="icon" style="background: rgba(244, 162, 89, 0.2);">
+                    <i class="fas fa-rocket" style="color: var(--ripe-mango);"></i>
+                </div>
+                <h2>Getting Started</h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I sign up for EveryMango?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Signing up is simple! Just click "Try Free" or "Log In" and sign in with your Google account. We use Google Sign-In for a few ADHD-friendly reasons:</p>
+                        <ul>
+                            <li><strong>One click</strong> — no new password to create or remember</li>
+                            <li><strong>No verification emails</strong> — you're in instantly</li>
+                            <li><strong>Secure</strong> — Google handles the authentication</li>
+                        </ul>
+                        <p>That's it! Once you're signed in, your tasks sync across all your devices automatically.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is EveryMango free?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes! EveryMango is free for personal use. We believe everyone deserves gentle, judgment-free productivity tools regardless of budget.</p>
+                        <p>In the future, we may offer premium features for teams or power users, but the core experience will always be free.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Where is my data stored?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>When you're signed in, your data is securely stored in the cloud using Google Firebase. This means:</p>
+                        <ul>
+                            <li>Your tasks sync automatically across all your devices</li>
+                            <li>Your data is private and only accessible to you</li>
+                            <li>Everything is backed up — no risk of losing your work</li>
+                        </ul>
+                        <p>We take your privacy seriously. See our <a href="/privacy" style="color: var(--mango-leaf);">Privacy Policy</a> for full details.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I use EveryMango on my phone?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Right now, EveryMango works best on desktop and laptop browsers. The app is functional on mobile, but we're actively working on a better mobile experience.</p>
+                        <p><strong>Coming soon:</strong> Dedicated iOS and Android apps are on our <a href="/roadmap" style="color: var(--mango-leaf);">roadmap</a> as a top priority!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="faq-category" id="features">
+            <div class="category-header">
+                <div class="icon" style="background: rgba(107, 142, 107, 0.15);">
+                    <i class="fas fa-star" style="color: var(--mango-leaf);"></i>
+                </div>
+                <h2>Features</h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is Brain Dump and how do I use it?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Brain Dump is your mental catch-all. It's the orange bar at the top of the screen where you can instantly capture any thought, task, or idea.</p>
+                        <p><strong>How to use it:</strong></p>
+                        <ul>
+                            <li>Type your thought in the Brain Dump bar</li>
+                            <li>Press Enter or click "Capture"</li>
+                            <li>Your thought is saved instantly</li>
+                            <li>Organize it later when you have bandwidth</li>
+                        </ul>
+                        <p>The key insight: <em>capture now, organize later</em>. Don't let ideas slip away while deciding where they "belong."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is Focus Mode?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Focus Mode hides everything except your starred (priority) tasks. When you're feeling overwhelmed by a long task list, Focus Mode cuts through the noise.</p>
+                        <p><strong>To use it:</strong></p>
+                        <ul>
+                            <li>Star the tasks that matter most right now</li>
+                            <li>Toggle on Focus Mode</li>
+                            <li>Only your starred tasks will be visible</li>
+                        </ul>
+                        <p>It's like putting blinders on — intentionally limiting your view so you can actually focus.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do Quick Wins work?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Quick Wins filters your task list to show only tasks that take 15 minutes or less. It's perfect for:</p>
+                        <ul>
+                            <li><strong>Low-energy days</strong> — when big tasks feel impossible</li>
+                            <li><strong>Building momentum</strong> — small wins create dopamine hits</li>
+                            <li><strong>Using spare time</strong> — got 10 minutes? Knock something out</li>
+                        </ul>
+                        <p>To use it, just set an estimated duration on your tasks, then toggle the Quick Wins filter.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is Gentle Mode (No-Judgment Mode)?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Gentle Mode changes how EveryMango talks about overdue tasks. Instead of guilt-inducing language like "5 days overdue," you'll see softer phrasing like "5 days ago — no judgment!"</p>
+                        <p>Why? Because beating yourself up never helped anyone get things done. The task is still there; we just don't need to rub it in.</p>
+                        <p>You can toggle Gentle Mode on or off in your settings based on your preference.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do Energy Levels work?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Energy Levels let you tag tasks by how much mental or physical energy they require: Low, Medium, or High.</p>
+                        <p><strong>Why it matters:</strong> On a low-spoons day, you can filter for low-energy tasks. On a high-energy day, tackle the big stuff. Match your work to how you actually feel.</p>
+                        <p>Examples:</p>
+                        <ul>
+                            <li><strong>Low energy:</strong> filing, email replies, organizing</li>
+                            <li><strong>Medium energy:</strong> research, routine meetings</li>
+                            <li><strong>High energy:</strong> creative work, difficult conversations, complex decisions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is Someday/Maybe?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Someday/Maybe is a parking lot for ideas and tasks that aren't ready yet. They're not forgotten — they're just ripening.</p>
+                        <p>Use it for:</p>
+                        <ul>
+                            <li>Ideas you want to explore "someday"</li>
+                            <li>Tasks that depend on something else happening first</li>
+                            <li>Things you might want to do but aren't committing to yet</li>
+                        </ul>
+                        <p>Moving items to Someday/Maybe removes them from your active view, reducing decision fatigue without losing them forever.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How does the Pomodoro Timer work?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>The Pomodoro Timer helps you work in focused bursts. The classic technique is 25 minutes of work followed by a 5-minute break.</p>
+                        <p><strong>Why it works for ADHD:</strong></p>
+                        <ul>
+                            <li>Time constraints create urgency (good for initiation)</li>
+                            <li>Knowing a break is coming makes starting easier</li>
+                            <li>Built-in breaks prevent burnout</li>
+                        </ul>
+                        <p>You can customize the work and break durations to fit your preferences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account & Data -->
+        <div class="faq-category" id="account">
+            <div class="category-header">
+                <div class="icon" style="background: rgba(196, 184, 216, 0.3);">
+                    <i class="fas fa-user" style="color: #9a8ab8;"></i>
+                </div>
+                <h2>Account & Data</h2>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is my data private?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes, absolutely. Your data is private and only accessible to you. We use Firebase's security rules to ensure each user can only access their own tasks and projects.</p>
+                        <p>We don't sell your data, and we don't use it for advertising. Your task list is yours alone.</p>
+                        <p>Read our full <a href="/privacy" style="color: var(--mango-leaf);">Privacy Policy</a> for details.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I delete my account?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>If you'd like to delete your account and all associated data, please email us at <a href="mailto:hello@everymango.com" style="color: var(--mango-leaf);">hello@everymango.com</a> with the subject line "Delete My Account."</p>
+                        <p>We'll process your request and permanently remove your data within 30 days. This action is irreversible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Why Google Sign-In only?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>This is an intentional ADHD-friendly choice! Here's why we chose Google Sign-In only:</p>
+                        <ul>
+                            <li><strong>One-click login</strong> — no new password to create or remember</li>
+                            <li><strong>Reduced cognitive load</strong> — one less thing to manage</li>
+                            <li><strong>No password reset emails</strong> — we've all been there</li>
+                            <li><strong>Secure by default</strong> — Google handles the security</li>
+                        </ul>
+                        <p>We may add more sign-in options in the future based on user feedback.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do my tasks sync across devices?</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Yes! When you're signed in with Google, your tasks automatically sync across all your devices. Add a task on your laptop, see it on your tablet.</p>
+                        <p>Syncing happens in real-time, so changes appear almost instantly on other devices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="contact-cta">
+            <h2>Still have questions?</h2>
+            <p>We're happy to help! Drop us a line and we'll get back to you.</p>
+            <a href="mailto:support@everymango.com" class="btn-primary">
+                <i class="fas fa-envelope"></i> Contact Support
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/help">Help Center</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+            <a href="mailto:hello@everymango.com">Contact</a>
+        </div>
+        <p class="copyright">© 2025 EveryMango. Made with 💚 for brains that work differently.</p>
+    </footer>
+
+    <script>
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const wasOpen = item.classList.contains('open');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('open');
+                });
+                
+                // Open clicked item if it wasn't already open
+                if (!wasOpen) {
+                    item.classList.add('open');
+                }
+            });
+        });
+
+        // Simple search functionality
+        document.getElementById('faq-search').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const question = item.querySelector('h3').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = searchTerm ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
