@@ -500,275 +500,6 @@
             opacity: 0.8;
         }
 
-        /* ============================================
-           MOBILE RESPONSIVE STYLES
-           ============================================ */
-        
-        /* Mobile sidebar overlay */
-        .sidebar-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 40;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-        .sidebar-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Mobile sidebar slide-in */
-        .sidebar-mobile {
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 280px;
-            z-index: 50;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-        .sidebar-mobile.open {
-            transform: translateX(0);
-        }
-
-        /* Mobile hamburger button */
-        .hamburger-btn {
-            display: none;
-            width: 44px;
-            height: 44px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            background: var(--mango-leaf);
-            color: white;
-            border: none;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        /* Mobile header bar */
-        .mobile-header {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 60px;
-            background: var(--cream);
-            border-bottom: 1px solid var(--linen);
-            z-index: 30;
-            padding: 0 16px;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* Task card mobile layout */
-        .task-card-mobile {
-            display: none;
-        }
-        .task-row-desktop {
-            display: block;
-        }
-
-        /* Mobile action buttons */
-        .mobile-actions-toggle {
-            display: none;
-        }
-
-        /* Responsive breakpoints */
-        @media (max-width: 1024px) {
-            .task-row-desktop .grid-cols-12 {
-                grid-template-columns: repeat(8, 1fr);
-            }
-            .task-row-desktop .col-span-3 {
-                grid-column: span 2;
-            }
-            .task-row-desktop .col-span-2 {
-                grid-column: span 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            /* Show mobile header */
-            .mobile-header {
-                display: flex;
-            }
-
-            /* Show hamburger */
-            .hamburger-btn {
-                display: flex;
-            }
-
-            /* Hide desktop sidebar */
-            .desktop-sidebar {
-                display: none;
-            }
-
-            /* Add top padding for fixed header */
-            .main-content {
-                padding-top: 60px;
-            }
-
-            /* Brain dump bar mobile */
-            .brain-dump-bar {
-                flex-direction: column;
-                gap: 12px;
-                padding: 12px 16px;
-            }
-            .brain-dump-bar .brain-dump-input-row {
-                flex-direction: column;
-                gap: 8px;
-                width: 100%;
-            }
-            .brain-dump-bar input {
-                width: 100%;
-            }
-            .brain-dump-bar .toggle-controls {
-                flex-wrap: wrap;
-                gap: 8px;
-                width: 100%;
-                justify-content: flex-start;
-                border-left: none;
-                padding-left: 0;
-                margin-left: 0;
-                padding-top: 8px;
-                border-top: 1px solid var(--linen);
-            }
-
-            /* Switch to mobile task cards */
-            .task-row-desktop {
-                display: none;
-            }
-            .task-card-mobile {
-                display: block;
-            }
-
-            /* Column headers hide on mobile */
-            .column-headers {
-                display: none;
-            }
-
-            /* Board header mobile */
-            .board-header {
-                flex-direction: column;
-                gap: 16px;
-                align-items: flex-start;
-            }
-            .board-header-actions {
-                width: 100%;
-                flex-wrap: wrap;
-            }
-            .board-filters {
-                flex-direction: column;
-                gap: 12px;
-                align-items: stretch;
-            }
-            .board-filters > * {
-                width: 100%;
-            }
-            .time-budget-mobile {
-                display: none;
-            }
-
-            /* Group header mobile */
-            .group-header {
-                flex-direction: column;
-                gap: 12px;
-                align-items: flex-start;
-            }
-            .group-header-right {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            /* Dashboard grid mobile */
-            .dashboard-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            /* Time blocking mobile */
-            .time-blocking-layout {
-                flex-direction: column;
-            }
-            .time-blocking-sidebar {
-                width: 100%;
-                max-height: 200px;
-            }
-
-            /* Team grid mobile */
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* Notification panel mobile */
-            .notification-panel {
-                position: fixed;
-                top: 60px;
-                left: 8px;
-                right: 8px;
-                width: auto;
-                max-height: calc(100vh - 80px);
-            }
-
-            /* Toast mobile position */
-            .toast-container {
-                left: 16px;
-                right: 16px;
-                bottom: 16px;
-            }
-
-            /* Page header mobile */
-            .page-header h2 {
-                font-size: 1.5rem;
-            }
-
-            /* Modal mobile */
-            .modal-content {
-                margin: 16px;
-                max-height: calc(100vh - 32px);
-                overflow-y: auto;
-            }
-        }
-
-        @media (max-width: 480px) {
-            /* Extra small screens */
-            .dashboard-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .board-header-actions button {
-                flex: 1;
-                justify-content: center;
-            }
-
-            .toggle-controls {
-                flex-direction: column;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-        }
-
-        /* Touch-friendly tap targets */
-        @media (hover: none) and (pointer: coarse) {
-            button, 
-            a, 
-            select, 
-            input[type="checkbox"],
-            .clickable {
-                min-height: 44px;
-                min-width: 44px;
-            }
-
-            .action-btn {
-                padding: 12px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -1104,285 +835,6 @@
             { id: 'member4', name: 'John Smith', email: 'john@company.com', role: 'Marketing', avatar: '👨🏽‍💼' }
         ];
 
-        // Mobile Header Component
-        function MobileHeader({ onMenuClick, user, unreadNotificationCount, onNotificationClick }) {
-            return (
-                <div className="mobile-header">
-                    <div className="flex items-center space-x-3">
-                        <button 
-                            onClick={onMenuClick}
-                            className="hamburger-btn"
-                        >
-                            <i className="fas fa-bars text-lg"></i>
-                        </button>
-                        <div className="flex items-center space-x-2">
-                            <MangoLogo size={28} />
-                            <span className="font-bold" style={{color: 'var(--charcoal)'}}>EveryMango</span>
-                        </div>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                        <button
-                            onClick={onNotificationClick}
-                            className="relative p-2"
-                            style={{color: unreadNotificationCount > 0 ? 'var(--ripe-mango)' : 'var(--warm-gray)'}}
-                        >
-                            <i className="fas fa-bell text-lg"></i>
-                            {unreadNotificationCount > 0 && (
-                                <span className="notification-badge absolute -top-1 -right-1 flex items-center justify-center rounded-full text-xs">
-                                    {unreadNotificationCount > 9 ? '9+' : unreadNotificationCount}
-                                </span>
-                            )}
-                        </button>
-                        {user?.photoURL && (
-                            <img src={user.photoURL} alt="" className="w-8 h-8 rounded-full" />
-                        )}
-                    </div>
-                </div>
-            );
-        }
-
-        // Mobile Task Card Component
-        function MobileTaskCard({ task, boardId, groupId, team, updateTask, deleteTask, startPomodoro, activeTaskId, noJudgmentMode, sendToSomedayMaybe, rolloverTask }) {
-            const [showActions, setShowActions] = useState(false);
-            const [showDetails, setShowDetails] = useState(false);
-
-            const statusOptions = [
-                { value: 'new', label: 'New' },
-                { value: 'working', label: 'Working' },
-                { value: 'stuck', label: 'Stuck' },
-                { value: 'done', label: 'Done' }
-            ];
-
-            const daysUntil = getDaysUntil(task.dueDate);
-            const isQuickWin = task.timeEstimate === '5min' || task.timeEstimate === '15min';
-            const isOverdue = daysUntil !== null && daysUntil < 0 && task.status !== 'done';
-
-            return (
-                <div className={`card-gentle shadow-soft p-4 mb-3 type-${task.taskType} ${task.status === 'done' ? 'opacity-60' : ''}`}>
-                    {/* Main Row */}
-                    <div className="flex items-start justify-between gap-3">
-                        <div className="flex-1 min-w-0">
-                            {/* Task Name */}
-                            <div className="flex items-center gap-2 mb-2">
-                                <button
-                                    onClick={() => updateTask(boardId, groupId, task.id, { isFocusTask: !task.isFocusTask })}
-                                    className={`text-lg ${task.isFocusTask ? '' : 'opacity-40'}`}
-                                    style={{color: task.isFocusTask ? 'var(--ripe-mango)' : 'var(--warm-gray)'}}
-                                >
-                                    <i className="fas fa-star"></i>
-                                </button>
-                                <h4 
-                                    className={`font-semibold text-sm flex-1 ${task.status === 'done' ? 'line-through' : ''}`}
-                                    style={{color: 'var(--charcoal)'}}
-                                    onClick={() => setShowDetails(!showDetails)}
-                                >
-                                    {task.name}
-                                </h4>
-                            </div>
-
-                            {/* Badges Row */}
-                            <div className="flex flex-wrap gap-2 mb-3">
-                                <select
-                                    value={task.status}
-                                    onChange={(e) => updateTask(boardId, groupId, task.id, { status: e.target.value })}
-                                    className={`status-${task.status} text-xs font-bold px-3 py-1.5 rounded-lg border-none`}
-                                >
-                                    {statusOptions.map(opt => (
-                                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                                    ))}
-                                </select>
-                                <span className="text-xs font-bold px-3 py-1.5 rounded-lg" style={{background: 'var(--sky)', color: 'var(--soft-black)'}}>
-                                    {task.timeEstimate}
-                                </span>
-                                {isQuickWin && (
-                                    <span className="quick-win-badge text-xs font-bold px-3 py-1.5 rounded-lg">
-                                        <i className="fas fa-bolt mr-1"></i>Quick
-                                    </span>
-                                )}
-                            </div>
-
-                            {/* Due Date */}
-                            {task.dueDate && (
-                                <div className="flex items-center gap-2 text-xs">
-                                    <span style={{color: isOverdue ? (noJudgmentMode ? 'var(--golden-flesh)' : 'var(--warm-red)') : 'var(--warm-gray)'}}>
-                                        <i className="fas fa-calendar mr-1"></i>
-                                        {formatDate(task.dueDate)}
-                                        {daysUntil !== null && (
-                                            <span className="ml-1">
-                                                ({daysUntil < 0 
-                                                    ? (noJudgmentMode ? `${Math.abs(daysUntil)}d ago 🥭` : `${Math.abs(daysUntil)}d overdue`)
-                                                    : daysUntil === 0 
-                                                    ? 'Today' 
-                                                    : `${daysUntil}d`})
-                                            </span>
-                                        )}
-                                    </span>
-                                </div>
-                            )}
-                        </div>
-
-                        {/* Quick Actions */}
-                        <div className="flex flex-col gap-2">
-                            <button
-                                onClick={() => startPomodoro(task.id)}
-                                className="w-10 h-10 rounded-xl flex items-center justify-center"
-                                style={{background: activeTaskId === task.id ? 'var(--warm-red)' : 'var(--mango-leaf)', color: 'white'}}
-                            >
-                                <i className="fas fa-play"></i>
-                            </button>
-                            <button
-                                onClick={() => setShowActions(!showActions)}
-                                className="w-10 h-10 rounded-xl flex items-center justify-center"
-                                style={{background: 'var(--linen)', color: 'var(--charcoal)'}}
-                            >
-                                <i className={`fas fa-${showActions ? 'times' : 'ellipsis-v'}`}></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Expanded Actions */}
-                    {showActions && (
-                        <div className="mt-4 pt-4 border-t" style={{borderColor: 'var(--linen)'}}>
-                            <div className="grid grid-cols-3 gap-2">
-                                {isOverdue && (
-                                    <>
-                                        <button
-                                            onClick={() => { rolloverTask(boardId, groupId, task.id); setShowActions(false); }}
-                                            className="p-3 rounded-xl text-xs font-semibold flex flex-col items-center gap-1"
-                                            style={{background: 'var(--golden-flesh)', color: 'var(--soft-black)'}}
-                                        >
-                                            <i className="fas fa-arrow-right"></i>
-                                            Today
-                                        </button>
-                                        <button
-                                            onClick={() => { sendToSomedayMaybe(boardId, groupId, task.id); setShowActions(false); }}
-                                            className="p-3 rounded-xl text-xs font-semibold flex flex-col items-center gap-1"
-                                            style={{background: 'var(--sky)', color: 'var(--soft-black)'}}
-                                        >
-                                            <i className="fas fa-cloud"></i>
-                                            Someday
-                                        </button>
-                                    </>
-                                )}
-                                <button
-                                    onClick={() => setShowDetails(!showDetails)}
-                                    className="p-3 rounded-xl text-xs font-semibold flex flex-col items-center gap-1"
-                                    style={{background: 'var(--linen)', color: 'var(--charcoal)'}}
-                                >
-                                    <i className="fas fa-edit"></i>
-                                    Edit
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        if (confirm('Delete this task?')) {
-                                            deleteTask(boardId, groupId, task.id);
-                                        }
-                                    }}
-                                    className="p-3 rounded-xl text-xs font-semibold flex flex-col items-center gap-1"
-                                    style={{background: 'rgba(232, 93, 74, 0.1)', color: 'var(--warm-red)'}}
-                                >
-                                    <i className="fas fa-trash"></i>
-                                    Delete
-                                </button>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* Expanded Details */}
-                    {showDetails && (
-                        <div className="mt-4 pt-4 border-t space-y-4" style={{borderColor: 'var(--linen)'}}>
-                            {/* Priority & Energy */}
-                            <div className="grid grid-cols-2 gap-3">
-                                <div>
-                                    <label className="text-xs font-bold mb-1 block" style={{color: 'var(--warm-gray)'}}>Priority</label>
-                                    <select
-                                        value={task.priority}
-                                        onChange={(e) => updateTask(boardId, groupId, task.id, { priority: e.target.value })}
-                                        className={`w-full px-3 py-2 rounded-xl text-sm font-bold priority-${task.priority} border-none`}
-                                    >
-                                        <option value="low">Low</option>
-                                        <option value="medium">Medium</option>
-                                        <option value="high">High</option>
-                                        <option value="critical">Critical</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label className="text-xs font-bold mb-1 block" style={{color: 'var(--warm-gray)'}}>Energy</label>
-                                    <select
-                                        value={task.energyLevel}
-                                        onChange={(e) => updateTask(boardId, groupId, task.id, { energyLevel: e.target.value })}
-                                        className={`w-full px-3 py-2 rounded-xl text-sm font-bold energy-${task.energyLevel} border-none`}
-                                    >
-                                        <option value="low">Low</option>
-                                        <option value="medium">Medium</option>
-                                        <option value="high">High</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            {/* Assignee */}
-                            <div>
-                                <label className="text-xs font-bold mb-1 block" style={{color: 'var(--warm-gray)'}}>Assignee</label>
-                                <select
-                                    value={task.assignee}
-                                    onChange={(e) => updateTask(boardId, groupId, task.id, { assignee: e.target.value })}
-                                    className="w-full px-3 py-2 border-2 rounded-xl text-sm"
-                                    style={{borderColor: 'var(--linen)', color: 'var(--charcoal)'}}
-                                >
-                                    <option value="">Unassigned</option>
-                                    {team.map(member => (
-                                        <option key={member.id} value={member.name}>
-                                            {member.avatar} {member.name}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-
-                            {/* Due Date */}
-                            <div>
-                                <label className="text-xs font-bold mb-1 block" style={{color: 'var(--warm-gray)'}}>Due Date</label>
-                                <input
-                                    type="date"
-                                    value={task.dueDate}
-                                    onChange={(e) => updateTask(boardId, groupId, task.id, { dueDate: e.target.value })}
-                                    className="w-full px-3 py-2 border-2 rounded-xl text-sm"
-                                    style={{borderColor: 'var(--linen)', color: 'var(--charcoal)'}}
-                                />
-                            </div>
-
-                            {/* Notes */}
-                            <div>
-                                <label className="text-xs font-bold mb-1 block" style={{color: 'var(--warm-gray)'}}>Notes</label>
-                                <textarea
-                                    value={task.notes || ''}
-                                    onChange={(e) => updateTask(boardId, groupId, task.id, { notes: e.target.value })}
-                                    placeholder="Add notes..."
-                                    className="w-full px-3 py-2 border-2 rounded-xl text-sm"
-                                    style={{borderColor: 'var(--linen)', color: 'var(--charcoal)'}}
-                                    rows="2"
-                                />
-                            </div>
-
-                            {/* Why It Matters */}
-                            <div className="why-matters-field p-3">
-                                <label className="text-xs font-bold mb-1 block" style={{color: 'var(--ripe-mango)'}}>
-                                    <i className="fas fa-heart mr-1"></i>Why This Matters
-                                </label>
-                                <textarea
-                                    value={task.whyItMatters || ''}
-                                    onChange={(e) => updateTask(boardId, groupId, task.id, { whyItMatters: e.target.value })}
-                                    placeholder="Connect to your motivation..."
-                                    className="w-full px-3 py-2 border-2 rounded-xl text-sm bg-white"
-                                    style={{borderColor: 'var(--ripe-mango)', color: 'var(--charcoal)'}}
-                                    rows="2"
-                                />
-                            </div>
-                        </div>
-                    )}
-                </div>
-            );
-        }
-
         // Main App Component
         function App() {
             // Authentication state
@@ -1406,7 +858,6 @@
             const [activeBoard, setActiveBoard] = useState(boards[0]?.id);
             const [view, setView] = useState('board');
             const [sidebarOpen, setSidebarOpen] = useState(true);
-            const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
             const [focusMode, setFocusMode] = useState(false);
             const [quickWinsOnly, setQuickWinsOnly] = useState(false);
             const [energyFilter, setEnergyFilter] = useState(null);
@@ -2051,68 +1502,6 @@
                 });
             };
 
-            // Export function
-            const exportData = (format = 'json') => {
-                const exportBoards = boards.map(board => ({
-                    name: board.name,
-                    groups: board.groups.map(group => ({
-                        name: group.name,
-                        tasks: group.tasks.map(task => ({
-                            name: task.name,
-                            status: task.status,
-                            priority: task.priority,
-                            assignee: task.assignee,
-                            dueDate: task.dueDate,
-                            timeEstimate: task.timeEstimate,
-                            energyLevel: task.energyLevel,
-                            taskType: task.taskType,
-                            notes: task.notes,
-                            whyItMatters: task.whyItMatters
-                        }))
-                    }))
-                }));
-
-                if (format === 'json') {
-                    const dataStr = JSON.stringify(exportBoards, null, 2);
-                    const blob = new Blob([dataStr], { type: 'application/json' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `everymango-export-${new Date().toISOString().split('T')[0]}.json`;
-                    a.click();
-                    URL.revokeObjectURL(url);
-                } else if (format === 'csv') {
-                    const rows = [['Board', 'Group', 'Task', 'Status', 'Priority', 'Assignee', 'Due Date', 'Time Estimate', 'Energy', 'Type', 'Notes']];
-                    exportBoards.forEach(board => {
-                        board.groups.forEach(group => {
-                            group.tasks.forEach(task => {
-                                rows.push([
-                                    board.name,
-                                    group.name,
-                                    task.name,
-                                    task.status,
-                                    task.priority,
-                                    task.assignee || '',
-                                    task.dueDate || '',
-                                    task.timeEstimate,
-                                    task.energyLevel,
-                                    task.taskType,
-                                    (task.notes || '').replace(/"/g, '""')
-                                ]);
-                            });
-                        });
-                    });
-                    const csv = rows.map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
-                    const blob = new Blob([csv], { type: 'text/csv' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = `everymango-export-${new Date().toISOString().split('T')[0]}.csv`;
-                    a.click();
-                    URL.revokeObjectURL(url);
-                }
-            };
-
             if (authLoading) {
                 return <LoadingScreen />;
             }
@@ -2123,48 +1512,8 @@
 
             return (
                 <div className={`flex h-screen overflow-hidden ${noJudgmentMode ? 'no-judgment-mode' : ''}`} style={{background: 'var(--cream)'}}>
-                    {/* Mobile Header */}
-                    <MobileHeader 
-                        onMenuClick={() => setMobileSidebarOpen(true)}
-                        user={user}
-                        unreadNotificationCount={unreadNotificationCount}
-                        onNotificationClick={() => setShowNotificationPanel(!showNotificationPanel)}
-                    />
-
-                    {/* Mobile Sidebar Overlay */}
-                    <div 
-                        className={`sidebar-overlay ${mobileSidebarOpen ? 'active' : ''}`}
-                        onClick={() => setMobileSidebarOpen(false)}
-                    ></div>
-
-                    {/* Mobile Sidebar */}
-                    <aside className={`sidebar-mobile sidebar-gentle ${mobileSidebarOpen ? 'open' : ''}`}>
-                        <Sidebar 
-                            boards={boards}
-                            activeBoard={activeBoard}
-                            setActiveBoard={(id) => { setActiveBoard(id); setMobileSidebarOpen(false); }}
-                            addBoard={addBoard}
-                            view={view}
-                            setView={(v) => { setView(v); setMobileSidebarOpen(false); }}
-                            sidebarOpen={true}
-                            setSidebarOpen={() => {}}
-                            pomodoroActive={pomodoroActive}
-                            pomodoroTime={pomodoroTime}
-                            isBreak={isBreak}
-                            stopPomodoro={stopPomodoro}
-                            recentlyViewed={recentlyViewed}
-                            overdueTaskCount={overdueTaskCount}
-                            rolloverAllOverdue={rolloverAllOverdue}
-                            user={user}
-                            onSignOut={handleSignOut}
-                            onClose={() => setMobileSidebarOpen(false)}
-                            exportData={exportData}
-                            isMobile={true}
-                        />
-                    </aside>
 
                     {/* Desktop Sidebar */}
-                    <aside className="desktop-sidebar">
                         <Sidebar 
                             boards={boards}
                             activeBoard={activeBoard}
@@ -2183,18 +1532,15 @@
                             rolloverAllOverdue={rolloverAllOverdue}
                             user={user}
                             onSignOut={handleSignOut}
-                            exportData={exportData}
-                            isMobile={false}
                         />
-                    </aside>
 
-                    <main className="flex-1 overflow-hidden flex flex-col main-content">
+                    <main className="flex-1 overflow-hidden flex flex-col">
                         {/* Brain Dump Bar */}
-                        <div className="glass-effect border-b px-4 md:px-8 py-4 brain-dump-bar" style={{borderColor: 'var(--linen)'}}>
-                            <div className="flex items-center space-x-4 brain-dump-input-row">
-                                <div className="flex items-center space-x-2 flex-shrink-0" style={{color: 'var(--ripe-mango)'}}>
+                        <div className="glass-effect border-b px-8 py-4" style={{borderColor: 'var(--linen)'}}>
+                            <div className="flex items-center space-x-4">
+                                <div className="flex items-center space-x-2" style={{color: 'var(--ripe-mango)'}}>
                                     <i className="fas fa-brain text-lg"></i>
-                                    <span className="text-sm font-bold hidden sm:inline" style={{color: 'var(--charcoal)'}}>Brain Dump</span>
+                                    <span className="text-sm font-bold" style={{color: 'var(--charcoal)'}}>Brain Dump</span>
                                 </div>
                                 <input
                                     type="text"
@@ -2203,65 +1549,68 @@
                                     onKeyDown={(e) => {
                                         if (e.key === 'Enter') handleBrainDump();
                                     }}
-                                    placeholder="Capture any thought... (Enter)"
-                                    className="flex-1 px-4 py-3 border-2 rounded-2xl text-sm brain-dump-active"
+                                    placeholder="Quickly capture any thought, task, or idea... (Press Enter)"
+                                    className="flex-1 px-5 py-3 border-2 rounded-2xl text-sm brain-dump-active"
                                     style={{borderColor: 'var(--ripe-mango)', background: 'white', color: 'var(--charcoal)'}}
                                 />
                                 <button
                                     onClick={handleBrainDump}
                                     disabled={!brainDumpText.trim()}
-                                    className="px-4 py-3 rounded-2xl text-white font-semibold transition-all disabled:opacity-50 flex-shrink-0"
+                                    className="px-5 py-3 rounded-2xl text-white font-semibold transition-all disabled:opacity-50"
                                     style={{background: 'var(--ripe-mango)', color: 'var(--soft-black)'}}
                                 >
-                                    <i className="fas fa-plus md:mr-2"></i>
-                                    <span className="hidden md:inline">Capture</span>
+                                    <i className="fas fa-plus mr-2"></i>
+                                    Capture
                                 </button>
-                            </div>
 
-                            {/* Toggle Controls */}
-                            <div className="flex items-center space-x-4 md:space-x-6 toggle-controls">
-                                {/* Gentle Mode Toggle */}
-                                <div className="flex items-center space-x-2">
-                                    <span className="text-xs md:text-sm font-semibold" style={{color: noJudgmentMode ? 'var(--mango-leaf)' : 'var(--warm-gray)'}}>
-                                        <i className="fas fa-heart mr-1"></i>
-                                        <span className="hidden sm:inline">Gentle</span>
-                                    </span>
-                                    <button
-                                        onClick={() => setNoJudgmentMode(!noJudgmentMode)}
-                                        className="toggle-track relative w-11 h-6 rounded-full transition-all"
-                                        style={{background: noJudgmentMode ? 'var(--mango-leaf)' : 'var(--linen)'}}
-                                    >
-                                        <span 
-                                            className="toggle-thumb absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-soft"
-                                            style={{left: noJudgmentMode ? '22px' : '2px'}}
-                                        ></span>
-                                    </button>
+                                {/* Toggle Controls */}
+                                <div className="flex items-center space-x-6 ml-4 pl-4" style={{borderLeft: '2px solid var(--linen)'}}>
+                                    {/* Gentle Mode Toggle */}
+                                    <div className="flex items-center space-x-3">
+                                        <span className="text-sm font-semibold" style={{color: noJudgmentMode ? 'var(--mango-leaf)' : 'var(--warm-gray)'}}>
+                                            <i className="fas fa-heart mr-1.5"></i>
+                                            Gentle
+                                        </span>
+                                        <button
+                                            onClick={() => setNoJudgmentMode(!noJudgmentMode)}
+                                            className="toggle-track relative w-12 h-7 rounded-full transition-all"
+                                            style={{background: noJudgmentMode ? 'var(--mango-leaf)' : 'var(--linen)'}}
+                                            title={noJudgmentMode ? 'Gentle Mode On - No judgment here!' : 'Gentle Mode Off'}
+                                        >
+                                            <span 
+                                                className="toggle-thumb absolute top-1 w-5 h-5 bg-white rounded-full shadow-soft"
+                                                style={{left: noJudgmentMode ? '24px' : '4px'}}
+                                            ></span>
+                                        </button>
+                                    </div>
+
+                                    {/* Focus Mode Toggle */}
+                                    <div className="flex items-center space-x-3">
+                                        <span className="text-sm font-semibold" style={{color: focusMode ? 'var(--mango-leaf)' : 'var(--warm-gray)'}}>
+                                            <i className={`fas fa-eye${focusMode ? '' : '-slash'} mr-1.5`}></i>
+                                            Focus
+                                        </span>
+                                        <button
+                                            onClick={() => setFocusMode(!focusMode)}
+                                            className="toggle-track relative w-12 h-7 rounded-full transition-all"
+                                            style={{background: focusMode ? 'var(--mango-leaf)' : 'var(--linen)'}}
+                                            title={focusMode ? 'Focus Mode On' : 'Focus Mode Off'}
+                                        >
+                                            <span 
+                                                className="toggle-thumb absolute top-1 w-5 h-5 bg-white rounded-full shadow-soft"
+                                                style={{left: focusMode ? '24px' : '4px'}}
+                                            ></span>
+                                        </button>
+                                    </div>
                                 </div>
 
-                                {/* Focus Mode Toggle */}
-                                <div className="flex items-center space-x-2">
-                                    <span className="text-xs md:text-sm font-semibold" style={{color: focusMode ? 'var(--mango-leaf)' : 'var(--warm-gray)'}}>
-                                        <i className={`fas fa-eye${focusMode ? '' : '-slash'} mr-1`}></i>
-                                        <span className="hidden sm:inline">Focus</span>
-                                    </span>
-                                    <button
-                                        onClick={() => setFocusMode(!focusMode)}
-                                        className="toggle-track relative w-11 h-6 rounded-full transition-all"
-                                        style={{background: focusMode ? 'var(--mango-leaf)' : 'var(--linen)'}}
-                                    >
-                                        <span 
-                                            className="toggle-thumb absolute top-0.5 w-5 h-5 bg-white rounded-full shadow-soft"
-                                            style={{left: focusMode ? '22px' : '2px'}}
-                                        ></span>
-                                    </button>
-                                </div>
-
-                                {/* Desktop Notification Bell */}
-                                <div className="relative hidden md:block">
+                                {/* Notification Bell */}
+                                <div className="relative ml-4">
                                     <button
                                         onClick={() => setShowNotificationPanel(!showNotificationPanel)}
                                         className={`p-3 rounded-2xl transition-all ${showNotificationPanel ? '' : 'hover:bg-white hover:bg-opacity-50'} ${unreadNotificationCount > 0 ? 'bell-ringing' : ''}`}
                                         style={{background: showNotificationPanel ? 'var(--sage-light)' : 'transparent'}}
+                                        title="Notifications"
                                     >
                                         <i className={`fas fa-bell text-lg`} style={{color: unreadNotificationCount > 0 ? 'var(--ripe-mango)' : 'var(--warm-gray)'}}></i>
                                         {unreadNotificationCount > 0 && (
@@ -2556,8 +1905,8 @@
         }
 
         // Sidebar Component
-        function Sidebar({ boards, activeBoard, setActiveBoard, addBoard, view, setView, sidebarOpen, setSidebarOpen, pomodoroActive, pomodoroTime, isBreak, stopPomodoro, recentlyViewed, overdueTaskCount, rolloverAllOverdue, user, onSignOut, onClose, exportData, isMobile }) {
-            if (!sidebarOpen && !isMobile) {
+        function Sidebar({ boards, activeBoard, setActiveBoard, addBoard, view, setView, sidebarOpen, setSidebarOpen, pomodoroActive, pomodoroTime, isBreak, stopPomodoro, recentlyViewed, overdueTaskCount, rolloverAllOverdue, user, onSignOut }) {
+            if (!sidebarOpen) {
                 return (
                     <div className="w-16 flex flex-col items-center py-5 sidebar-gentle" style={{borderRight: '1px solid rgba(255,255,255,0.1)'}}>
                         <button onClick={() => setSidebarOpen(true)} className="mb-4 text-xl hover:bg-white hover:bg-opacity-20 p-3 rounded-2xl text-white transition-all">
@@ -2568,7 +1917,7 @@
             }
 
             return (
-                <div className={`${isMobile ? 'w-full h-full' : 'w-64'} flex flex-col sidebar-gentle`} style={{borderRight: '1px solid rgba(255,255,255,0.1)'}}>
+                <aside className="w-64 flex flex-col sidebar-gentle" style={{borderRight: '1px solid rgba(255,255,255,0.1)'}}>
                     <div className="p-4 md:p-5 border-b" style={{borderColor: 'rgba(255,255,255,0.1)'}}>
                         <div className="flex items-center justify-between mb-3">
                             <div className="flex items-center">
@@ -2578,10 +1927,7 @@
                                     <p className="tagline text-white">Ripen at your own pace</p>
                                 </div>
                             </div>
-                            <button 
-                                onClick={isMobile ? onClose : () => setSidebarOpen(false)} 
-                                className="hover:bg-white hover:bg-opacity-20 p-2.5 rounded-xl text-white transition-all"
-                            >
+                            <button onClick={() => setSidebarOpen(false)} className="hover:bg-white hover:bg-opacity-20 p-2.5 rounded-xl text-white transition-all">
                                 <i className="fas fa-times"></i>
                             </button>
                         </div>
@@ -2771,34 +2117,8 @@
                                 ))}
                             </div>
                         </div>
-
-                        {/* Export Button */}
-                        {exportData && (
-                            <div className="pt-4 border-t" style={{borderColor: 'rgba(255,255,255,0.1)'}}>
-                                <h2 className="text-xs font-bold uppercase tracking-wider mb-3 px-2" style={{color: 'rgba(255,255,255,0.6)'}}>
-                                    <i className="fas fa-download mr-2"></i>
-                                    Export
-                                </h2>
-                                <div className="flex gap-2 px-2">
-                                    <button
-                                        onClick={() => exportData('json')}
-                                        className="flex-1 px-3 py-2 rounded-xl text-xs font-semibold transition-all hover:bg-white hover:bg-opacity-20"
-                                        style={{background: 'rgba(255,255,255,0.1)', color: 'white'}}
-                                    >
-                                        <i className="fas fa-file-code mr-1"></i> JSON
-                                    </button>
-                                    <button
-                                        onClick={() => exportData('csv')}
-                                        className="flex-1 px-3 py-2 rounded-xl text-xs font-semibold transition-all hover:bg-white hover:bg-opacity-20"
-                                        style={{background: 'rgba(255,255,255,0.1)', color: 'white'}}
-                                    >
-                                        <i className="fas fa-file-csv mr-1"></i> CSV
-                                    </button>
-                                </div>
-                            </div>
-                        )}
                     </div>
-                </div>
+                </aside>
             );
         }
 
@@ -3328,42 +2648,23 @@
 
                             <div className="space-y-2 md:space-y-3 mt-2 md:mt-3">
                                 {filteredTasks.map(task => (
-                                    <React.Fragment key={task.id}>
-                                        {/* Desktop Task Row */}
-                                        <div className="task-row-desktop">
-                                            <TaskRow
-                                                task={task}
-                                                boardId={boardId}
-                                                groupId={group.id}
-                                                team={team}
-                                                updateTask={updateTask}
-                                                deleteTask={deleteTask}
-                                                moveTask={moveTask}
-                                                allBoards={allBoards}
-                                                startPomodoro={startPomodoro}
-                                                activeTaskId={activeTaskId}
-                                                noJudgmentMode={noJudgmentMode}
-                                                sendToSomedayMaybe={sendToSomedayMaybe}
-                                                rolloverTask={rolloverTask}
-                                            />
-                                        </div>
-                                        {/* Mobile Task Card */}
-                                        <div className="task-card-mobile">
-                                            <MobileTaskCard
-                                                task={task}
-                                                boardId={boardId}
-                                                groupId={group.id}
-                                                team={team}
-                                                updateTask={updateTask}
-                                                deleteTask={deleteTask}
-                                                startPomodoro={startPomodoro}
-                                                activeTaskId={activeTaskId}
-                                                noJudgmentMode={noJudgmentMode}
-                                                sendToSomedayMaybe={sendToSomedayMaybe}
-                                                rolloverTask={rolloverTask}
-                                            />
-                                        </div>
-                                    </React.Fragment>
+                                    <TaskRow
+                                        key={task.id}
+                                        task={task}
+                                        boardId={boardId}
+                                        groupId={group.id}
+                                        team={team}
+                                        updateTask={updateTask}
+                                        deleteTask={deleteTask}
+                                        moveTask={moveTask}
+                                        allBoards={allBoards}
+                                        focusMode={focusMode}
+                                        startPomodoro={startPomodoro}
+                                        activeTaskId={activeTaskId}
+                                        noJudgmentMode={noJudgmentMode}
+                                        sendToSomedayMaybe={sendToSomedayMaybe}
+                                        rolloverTask={rolloverTask}
+                                    />
                                 ))}
                                 {filteredTasks.length === 0 && (
                                     <div className="text-center py-8 md:py-12" style={{color: 'var(--warm-gray)'}}>
