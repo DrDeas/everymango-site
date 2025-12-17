@@ -450,10 +450,15 @@
             <h2>Join the Mango Grove 🥭</h2>
             <p class="subtitle">Get updates on community launch, new features, and ADHD-friendly tips.</p>
             
-            <form class="signup-form" id="newsletter-form">
+            <form 
+                action="https://buttondown.com/api/emails/embed-subscribe/EveryMango"
+                method="post"
+                target="_blank"
+                class="signup-form"
+            >
                 <div class="input-wrapper">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="your@email.com" required id="email-input">
+                    <input type="email" name="email" placeholder="your@email.com" required id="email-input">
                 </div>
                 <button type="submit" class="btn-primary">
                     <i class="fas fa-paper-plane"></i>
@@ -517,31 +522,5 @@
         </div>
         <p class="copyright">© 2025 EveryMango. Made with 💚 for brains that work differently.</p>
     </footer>
-
-    <script>
-        // Simple form handling (you'll want to connect this to your email service)
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email-input').value;
-            const form = this;
-            const successMessage = document.getElementById('success-message');
-            
-            // Here you would typically send the email to your newsletter service
-            // For now, we'll just show the success message
-            
-            // Hide form, show success
-            form.style.display = 'none';
-            successMessage.classList.add('show');
-            
-            // You can integrate with services like:
-            // - Buttondown (simple, indie)
-            // - ConvertKit (creator-focused)
-            // - Mailchimp (popular, free tier)
-            // - Google Forms (free, simple)
-            
-            console.log('Email submitted:', email);
-        });
-    </script>
 </body>
 </html>
