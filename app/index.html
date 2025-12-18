@@ -659,9 +659,34 @@
                 }
             };
         
+            const [showManualInstructions, setShowManualInstructions] = useState(false);
+
             const openInBrowser = () => {
                 const currentUrl = window.location.href;
-                window.open(currentUrl, '_system') || window.open(currentUrl, '_blank');
+                
+                // Try to open in system browser
+                const opened = window.open(currentUrl, '_system') || window.open(currentUrl, '_blank');
+                
+                // If that didn't work, show manual instructions after a brief delay
+                setTimeout(() => {
+                    setShowManualInstructions(true);
+                }, 1000);
+            };
+            
+            const copyUrlToClipboard = () => {
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('✅ Link copied! Now paste it in Safari or Chrome');
+                }).catch(() => {
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = url;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('✅ Link copied! Now paste it in Safari or Chrome');
+                });
             };
         
             return (
@@ -693,17 +718,52 @@
                                         <p className="text-sm mb-3" style={{color: 'var(--charcoal)'}}>
                                             For security, Google doesn't allow sign-in from {browserName || 'in-app browsers'}. No worries - just open EveryMango in your main browser!
                                         </p>
-                                        <button
-                                            onClick={openInBrowser}
-                                            className="w-full px-5 py-3 rounded-2xl font-semibold flex items-center justify-center space-x-2 transition-all hover-lift"
-                                            style={{background: 'var(--mango-leaf)', color: 'white'}}
-                                        >
-                                            <i className="fas fa-external-link-alt"></i>
-                                            <span>Open in Safari/Chrome</span>
-                                        </button>
-                                        <p className="text-xs mt-3 font-medium" style={{color: 'var(--warm-gray)'}}>
-                                            Or tap the menu button (•••) and select "Open in Browser"
-                                        </p>
+                                        
+                                        {!showManualInstructions ? (
+                                            <>
+                                                <button
+                                                    onClick={openInBrowser}
+                                                    className="w-full px-5 py-3 rounded-2xl font-semibold flex items-center justify-center space-x-2 transition-all hover-lift mb-3"
+                                                    style={{background: 'var(--mango-leaf)', color: 'white'}}
+                                                >
+                                                    <i className="fas fa-external-link-alt"></i>
+                                                    <span>Try Opening in Browser</span>
+                                                </button>
+                                                <p className="text-xs font-medium" style={{color: 'var(--warm-gray)'}}>
+                                                    Or tap the menu (•••) → "Open in Browser"
+                                                </p>
+                                            </>
+                                        ) : (
+                                            <div className="space-y-3">
+                                                <div className="p-4 rounded-xl" style={{background: 'rgba(107, 142, 107, 0.15)'}}>
+                                                    <p className="text-xs font-bold mb-2" style={{color: 'var(--charcoal)'}}>
+                                                        Manual steps (it's easy!):
+                                                    </p>
+                                                    <ol className="text-xs space-y-2" style={{color: 'var(--charcoal)', paddingLeft: '1.2rem'}}>
+                                                        <li>1. Tap the <strong>•••</strong> menu button (top right)</li>
+                                                        <li>2. Select <strong>"Open in {browserName === 'Facebook' ? 'Chrome' : 'Safari'}"</strong> or <strong>"Open in Browser"</strong></li>
+                                                        <li>3. Sign in when it opens! 🥭</li>
+                                                    </ol>
+                                                </div>
+                                                
+                                                <div className="pt-3" style={{borderTop: '1px solid rgba(244, 162, 89, 0.3)'}}>
+                                                    <p className="text-xs font-bold mb-2" style={{color: 'var(--charcoal)'}}>
+                                                        Or copy the link:
+                                                    </p>
+                                                    <button
+                                                        onClick={copyUrlToClipboard}
+                                                        className="w-full px-4 py-3 rounded-xl font-semibold flex items-center justify-center space-x-2 transition-all hover-lift"
+                                                        style={{background: 'white', border: '2px solid var(--mango-leaf)', color: 'var(--mango-leaf)'}}
+                                                    >
+                                                        <i className="fas fa-copy"></i>
+                                                        <span>Copy Link</span>
+                                                    </button>
+                                                    <p className="text-xs mt-2 font-medium" style={{color: 'var(--warm-gray)'}}>
+                                                        Then paste in Safari or Chrome
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
