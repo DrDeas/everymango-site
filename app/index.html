@@ -497,6 +497,21 @@
             letter-spacing: 0.05em;
             opacity: 0.8;
         }
+
+        /* Embedded browser warning styling */
+        .browser-warning {
+            animation: gentleSlideIn 0.5s ease-out;
+        }
+        @keyframes gentleSlideIn {
+            from {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -592,7 +607,45 @@
         function LoginScreen() {
             const [isLoading, setIsLoading] = useState(false);
             const [error, setError] = useState('');
-
+            const [isEmbeddedBrowser, setIsEmbeddedBrowser] = useState(false);
+            const [browserName, setBrowserName] = useState('');
+        
+            useEffect(() => {
+                // Detect if running in embedded/in-app browser
+                const ua = navigator.userAgent || navigator.vendor || window.opera;
+                let detected = false;
+                let name = '';
+        
+                if (ua.includes('Instagram')) {
+                    detected = true;
+                    name = 'Instagram';
+                } else if (ua.includes('FBAN') || ua.includes('FBAV')) {
+                    detected = true;
+                    name = 'Facebook';
+                } else if (ua.includes('TikTok')) {
+                    detected = true;
+                    name = 'TikTok';
+                } else if (ua.includes('LinkedInApp')) {
+                    detected = true;
+                    name = 'LinkedIn';
+                } else if (ua.includes('Twitter')) {
+                    detected = true;
+                    name = 'Twitter';
+                } else if (ua.includes('Snapchat')) {
+                    detected = true;
+                    name = 'Snapchat';
+                } else if (ua.includes('MicroMessenger')) {
+                    detected = true;
+                    name = 'WeChat';
+                } else if (ua.includes('wv') || ua.includes('WebView')) {
+                    detected = true;
+                    name = 'this app';
+                }
+                
+                setIsEmbeddedBrowser(detected);
+                setBrowserName(name);
+            }, []);
+        
             const handleGoogleSignIn = async () => {
                 setIsLoading(true);
                 setError('');
@@ -605,7 +658,12 @@
                     setIsLoading(false);
                 }
             };
-
+        
+            const openInBrowser = () => {
+                const currentUrl = window.location.href;
+                window.open(currentUrl, '_system') || window.open(currentUrl, '_blank');
+            };
+        
             return (
                 <div className="min-h-screen flex items-center justify-center p-8" style={{background: 'linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%)'}}>
                     <div className="card-gentle shadow-soft-lg p-12 max-w-md w-full text-center">
@@ -622,34 +680,64 @@
                         <p className="mb-6" style={{color: 'var(--charcoal)'}}>
                             Gentle project management for ADHD minds
                         </p>
-
+        
+                        {/* Embedded Browser Warning */}
+                        {isEmbeddedBrowser && (
+                            <div className="browser-warning mb-6 p-5 rounded-2xl text-left" style={{background: 'rgba(244, 162, 89, 0.15)', border: '2px solid var(--ripe-mango)'}}>
+                                <div className="flex items-start space-x-3">
+                                    <i className="fas fa-info-circle text-xl mt-1" style={{color: 'var(--ripe-mango)'}}></i>
+                                    <div className="flex-1">
+                                        <p className="font-bold text-sm mb-2" style={{color: 'var(--charcoal)'}}>
+                                            Hey there! 🥭 Quick heads-up
+                                        </p>
+                                        <p className="text-sm mb-3" style={{color: 'var(--charcoal)'}}>
+                                            For security, Google doesn't allow sign-in from {browserName || 'in-app browsers'}. No worries - just open EveryMango in your main browser!
+                                        </p>
+                                        <button
+                                            onClick={openInBrowser}
+                                            className="w-full px-5 py-3 rounded-2xl font-semibold flex items-center justify-center space-x-2 transition-all hover-lift"
+                                            style={{background: 'var(--mango-leaf)', color: 'white'}}
+                                        >
+                                            <i className="fas fa-external-link-alt"></i>
+                                            <span>Open in Safari/Chrome</span>
+                                        </button>
+                                        <p className="text-xs mt-3 font-medium" style={{color: 'var(--warm-gray)'}}>
+                                            Or tap the menu button (•••) and select "Open in Browser"
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+        
                         {error && (
                             <div className="mb-4 p-4 rounded-2xl text-sm" style={{background: 'rgba(232, 93, 74, 0.1)', color: 'var(--warm-red)'}}>
                                 {error}
                             </div>
                         )}
-
-                        <button
-                            onClick={handleGoogleSignIn}
-                            disabled={isLoading}
-                            className="w-full px-6 py-4 rounded-2xl font-semibold flex items-center justify-center space-x-3 transition-all hover-lift disabled:opacity-50"
-                            style={{background: 'white', border: '2px solid var(--linen)', color: 'var(--charcoal)'}}
-                        >
-                            {isLoading ? (
-                                <i className="fas fa-spinner fa-spin"></i>
-                            ) : (
-                                <>
-                                    <svg width="20" height="20" viewBox="0 0 24 24">
-                                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                                    </svg>
-                                    <span>Continue with Google</span>
-                                </>
-                            )}
-                        </button>
-
+        
+                        {!isEmbeddedBrowser && (
+                            <button
+                                onClick={handleGoogleSignIn}
+                                disabled={isLoading}
+                                className="w-full px-6 py-4 rounded-2xl font-semibold flex items-center justify-center space-x-3 transition-all hover-lift disabled:opacity-50"
+                                style={{background: 'white', border: '2px solid var(--linen)', color: 'var(--charcoal)'}}
+                            >
+                                {isLoading ? (
+                                    <i className="fas fa-spinner fa-spin"></i>
+                                ) : (
+                                    <>
+                                        <svg width="20" height="20" viewBox="0 0 24 24">
+                                            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                                        </svg>
+                                        <span>Continue with Google</span>
+                                    </>
+                                )}
+                            </button>
+                        )}
+        
                         <p className="mt-8 text-xs" style={{color: 'var(--warm-gray)'}}>
                             Your data is stored securely and syncs across all your devices
                         </p>
