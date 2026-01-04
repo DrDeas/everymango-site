@@ -1270,6 +1270,7 @@
             const [user, setUser] = useState(null);
             const [authLoading, setAuthLoading] = useState(true);
             const [userProfile, setUserProfile] = useState(null);
+            const [showProfileSettings, setShowProfileSettings] = useState(false);
 
         // Save user profile to Firestore
         const saveUserProfile = async (user) => {
@@ -1337,6 +1338,12 @@
                 return () => unsubscribe();
             }, []);
 
+            // Global function to open profile settings from Sidebar
+            useEffect(() => {
+                window.openProfileSettings = () => setShowProfileSettings(true);
+                return () => delete window.openProfileSettings;
+            }, []);
+            
             const [boards, setBoards] = useState(initialBoards);
             const [dataLoaded, setDataLoaded] = useState(false);
             
@@ -1954,6 +1961,11 @@
                 }
             };
 
+            const handleProfileUpdate = (newProfileData) => {
+                setUserProfile(newProfileData);
+                setShowProfileSettings(false);
+            };
+            
             const handleBrainDump = () => {
                 if (!brainDumpText.trim()) return;
 
@@ -2190,6 +2202,16 @@
                             <Toast key={toast.id} toast={toast} onDismiss={() => dismissToast(toast.id)} />
                         ))}
                     </div>
+
+                    {/* Profile Settings Modal */}
+                    {showProfileSettings && (
+                        <ProfileSettingsModal
+                            userProfile={userProfile}
+                            user={user}
+                            onClose={() => setShowProfileSettings(false)}
+                            onSave={handleProfileUpdate}
+                        />
+                    )}
                 </div>
             );
         }
@@ -2419,6 +2441,197 @@
             );
         }
 
+        // Profile Settings Modal Component
+        function ProfileSettingsModal({ userProfile, user, onClose, onSave }) {
+            const [uploadedPhoto, setUploadedPhoto] = useState(userProfile?.photoURL || null);
+            const [displayName, setDisplayName] = useState(userProfile?.displayName || '');
+            const [uploadError, setUploadError] = useState('');
+            const [isSaving, setIsSaving] = useState(false);
+        
+            const handleImageUpload = (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+        
+                const maxSize = 2 * 1024 * 1024; // 2MB limit
+                if (file.size > maxSize) {
+                    setUploadError('Image must be less than 2MB');
+                    return;
+                }
+        
+                if (!file.type.startsWith('image/')) {
+                    setUploadError('Please upload an image file');
+                    return;
+                }
+        
+                setUploadError('');
+        
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    setUploadedPhoto(event.target.result);
+                };
+                reader.readAsDataURL(file);
+            };
+        
+            const handleSave = async () => {
+                setIsSaving(true);
+                try {
+                    const profileData = {
+                        photoURL: uploadedPhoto,
+                        displayName: displayName || user.email?.split('@')[0],
+                        email: user.email,
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    };
+        
+                    await db.collection('users').doc(user.uid).collection('profile').doc('info').set(profileData, { merge: true });
+                    
+                    onSave(profileData);
+                    console.log('✅ Profile updated successfully!');
+                } catch (error) {
+                    console.error('❌ Error updating profile:', error);
+                    setUploadError('Failed to save profile. Please try again.');
+                } finally {
+                    setIsSaving(false);
+                }
+            };
+        
+            return (
+                <div 
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                    style={{background: 'rgba(74, 74, 74, 0.6)', backdropFilter: 'blur(8px)'}}
+                    onClick={onClose}
+                >
+                    <div 
+                        className="card-gentle shadow-soft-lg p-8 max-w-md w-full"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="flex items-center justify-between mb-6">
+                            <h3 className="text-2xl font-bold" style={{color: 'var(--charcoal)'}}>
+                                Profile Settings 🥭
+                            </h3>
+                            <button
+                                onClick={onClose}
+                                className="p-2 rounded-xl transition-all hover:bg-gray-100"
+                                style={{color: 'var(--warm-gray)'}}
+                            >
+                                <i className="fas fa-times"></i>
+                            </button>
+                        </div>
+        
+                        <div className="space-y-6">
+                            {/* Profile Photo */}
+                            <div className="text-center">
+                                <div className="mb-4 flex justify-center">
+                                    {uploadedPhoto ? (
+                                        <img 
+                                            src={uploadedPhoto} 
+                                            alt="Profile" 
+                                            className="w-32 h-32 rounded-full object-cover"
+                                            style={{boxShadow: '0 4px 16px rgba(74, 74, 74, 0.15)'}}
+                                        />
+                                    ) : (
+                                        <div 
+                                            className="w-32 h-32 rounded-full flex items-center justify-center"
+                                            style={{background: 'var(--linen)'}}
+                                        >
+                                            <i className="fas fa-user text-5xl" style={{color: 'var(--warm-gray)'}}></i>
+                                        </div>
+                                    )}
+                                </div>
+        
+                                <label className="btn-primary px-6 py-3 text-white rounded-2xl hover-lift font-semibold cursor-pointer inline-flex items-center">
+                                    <i className="fas fa-upload mr-2"></i>
+                                    {uploadedPhoto ? 'Change Photo' : 'Upload Photo'}
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleImageUpload}
+                                        className="hidden"
+                                    />
+                                </label>
+        
+                                {uploadedPhoto && (
+                                    <button
+                                        onClick={() => setUploadedPhoto(null)}
+                                        className="ml-3 px-4 py-3 rounded-2xl font-semibold transition-all"
+                                        style={{background: 'var(--linen)', color: 'var(--warm-gray)'}}
+                                    >
+                                        Remove
+                                    </button>
+                                )}
+        
+                                <p className="text-xs mt-3 font-medium" style={{color: 'var(--warm-gray)'}}>
+                                    Max 2MB • JPG, PNG, GIF
+                                </p>
+        
+                                {uploadError && (
+                                    <p className="text-xs mt-2 font-semibold" style={{color: 'var(--warm-red)'}}>
+                                        {uploadError}
+                                    </p>
+                                )}
+                            </div>
+        
+                            {/* Display Name */}
+                            <div>
+                                <label className="block text-sm font-bold mb-2" style={{color: 'var(--charcoal)'}}>
+                                    Display Name
+                                </label>
+                                <input
+                                    type="text"
+                                    value={displayName}
+                                    onChange={(e) => setDisplayName(e.target.value)}
+                                    placeholder="Your name"
+                                    className="w-full px-5 py-3.5 border-2 rounded-2xl"
+                                    style={{borderColor: 'var(--linen)', color: 'var(--charcoal)'}}
+                                />
+                            </div>
+        
+                            {/* Email (read-only) */}
+                            <div>
+                                <label className="block text-sm font-bold mb-2" style={{color: 'var(--charcoal)'}}>
+                                    Email
+                                </label>
+                                <input
+                                    type="email"
+                                    value={user.email}
+                                    disabled
+                                    className="w-full px-5 py-3.5 border-2 rounded-2xl opacity-60"
+                                    style={{borderColor: 'var(--linen)', color: 'var(--charcoal)', background: 'var(--cream-dark)'}}
+                                />
+                            </div>
+        
+                            {/* Action Buttons */}
+                            <div className="flex space-x-3 pt-4">
+                                <button
+                                    onClick={handleSave}
+                                    disabled={isSaving}
+                                    className="flex-1 btn-primary px-6 py-3 text-white rounded-2xl hover-lift font-semibold disabled:opacity-50"
+                                >
+                                    {isSaving ? (
+                                        <>
+                                            <i className="fas fa-spinner fa-spin mr-2"></i>
+                                            Saving...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <i className="fas fa-save mr-2"></i>
+                                            Save Changes
+                                        </>
+                                    )}
+                                </button>
+                                <button
+                                    onClick={onClose}
+                                    className="px-6 py-3 rounded-2xl font-semibold transition-all"
+                                    style={{background: 'var(--linen)', color: 'var(--charcoal)'}}
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        
         // Sidebar Component
         function Sidebar({ boards, activeBoard, setActiveBoard, addBoard, view, setView, sidebarOpen, setSidebarOpen, pomodoroActive, pomodoroTime, isBreak, stopPomodoro, recentlyViewed, overdueTaskCount, rolloverAllOverdue, user, userProfile, onSignOut }) {
             if (!sidebarOpen) {
@@ -2448,17 +2661,26 @@
                         </div>
                         {user && (
                             <div className="flex items-center justify-between pt-3" style={{borderTop: '1px solid rgba(255,255,255,0.1)'}}>
-                                <div className="flex items-center space-x-2">
+                                <div 
+                                    className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-all flex-1"
+                                    onClick={() => {
+                                        if (window.openProfileSettings) window.openProfileSettings();
+                                    }}
+                                    title="Click to edit profile"
+                                >
                                     {userProfile?.photoURL ? (
-                                        <img src={userProfile.photoURL} alt="" className="w-8 h-8 rounded-full" />
+                                        <img src={userProfile.photoURL} alt="" className="w-8 h-8 rounded-full object-cover" />
                                     ) : (
-                                        <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{background: 'rgba(255,255,255,0.2)'}}>
-                                            <i className="fas fa-user text-white text-sm"></i>
+                                        <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{background: 'var(--ripe-mango)'}}>
+                                            <span className="text-white text-sm font-bold">
+                                                {userProfile?.displayName?.charAt(0) || user.email?.charAt(0) || 'U'}
+                                            </span>
                                         </div>
                                     )}
-                                    <span className="text-sm text-white truncate max-w-[120px]" title={user.email}>
+                                    <span className="text-sm text-white truncate max-w-[100px]" title={user.email}>
                                         {userProfile?.displayName || user.displayName || user.email?.split('@')[0]}
                                     </span>
+                                    <i className="fas fa-edit text-xs" style={{color: 'rgba(255,255,255,0.6)'}}></i>
                                 </div>
                                 <button
                                     onClick={onSignOut}
