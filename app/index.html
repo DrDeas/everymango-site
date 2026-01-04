@@ -3663,7 +3663,7 @@
                                 <option value="">Unassigned</option>
                                 {team.map(member => (
                                     <option key={member.id} value={member.name}>
-                                        {member.avatar} {member.name}
+                                        {member.avatar && !member.avatar.startsWith('data:image') ? member.avatar + ' ' : ''}{member.name}
                                     </option>
                                 ))}
                             </select>
