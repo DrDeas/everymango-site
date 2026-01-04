@@ -1265,11 +1265,70 @@
             // Authentication state
             const [user, setUser] = useState(null);
             const [authLoading, setAuthLoading] = useState(true);
+            const [userProfile, setUserProfile] = useState(null);
 
+        // Save user profile to Firestore
+        const saveUserProfile = async (user) => {
+            if (!user) return;
+            
+            try {
+                const profileRef = db.collection('users').doc(user.uid).collection('profile').doc('info');
+                const profileDoc = await profileRef.get();
+                
+                // Only save if we have a photo and don't have one stored yet
+                if (user.photoURL && (!profileDoc.exists || !profileDoc.data().photoURL)) {
+                    await profileRef.set({
+                        photoURL: user.photoURL,
+                        displayName: user.displayName || user.email?.split('@')[0],
+                        email: user.email,
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    }, { merge: true });
+                    console.log('✅ Profile photo saved to Firestore');
+                }
+            } catch (error) {
+                console.error('Error saving user profile:', error);
+            }
+        };
+        
             // Listen for auth state changes
             useEffect(() => {
-                const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
+                const unsubscribe = auth.onAuthStateChanged(async (firebaseUser) => {
                     setUser(firebaseUser);
+                    
+                    if (firebaseUser) {
+                        // Save profile if signing in for first time
+                        await saveUserProfile(firebaseUser);
+                        
+                        // Load profile from Firestore
+                        try {
+                            const profileRef = db.collection('users').doc(firebaseUser.uid).collection('profile').doc('info');
+                            const profileDoc = await profileRef.get();
+                            
+                            if (profileDoc.exists) {
+                                setUserProfile(profileDoc.data());
+                                console.log('✅ Profile loaded from Firestore:', profileDoc.data());
+                            } else {
+                                // Fallback to Firebase Auth data
+                                setUserProfile({
+                                    photoURL: firebaseUser.photoURL,
+                                    displayName: firebaseUser.displayName,
+                                    email: firebaseUser.email
+                                });
+                                console.log('ℹ️ Using Firebase Auth profile data');
+                            }
+                        } catch (error) {
+                            console.error('Error loading profile:', error);
+                            // Fallback to Firebase Auth data
+                            setUserProfile({
+                                photoURL: firebaseUser.photoURL,
+                                displayName: firebaseUser.displayName,
+                                email: firebaseUser.email
+                            });
+                        }
+                    } else {
+                        setUserProfile(null);
+                    }
+                    
                     setAuthLoading(false);
                 });
                 return () => unsubscribe();
@@ -1886,6 +1945,7 @@
                     setBoards(initialBoards);
                     setTeam(initialTeam);
                     setDataLoaded(false);
+                    setUserProfile(null);
                 } catch (error) {
                     console.error('Sign out error:', error);
                 }
@@ -1966,6 +2026,7 @@
                         overdueTaskCount={overdueTaskCount}
                         rolloverAllOverdue={rolloverAllOverdue}
                         user={user}
+                        userProfile={userProfile}
                         onSignOut={handleSignOut}
                     />
 
@@ -2356,7 +2417,7 @@
         }
 
         // Sidebar Component
-        function Sidebar({ boards, activeBoard, setActiveBoard, addBoard, view, setView, sidebarOpen, setSidebarOpen, pomodoroActive, pomodoroTime, isBreak, stopPomodoro, recentlyViewed, overdueTaskCount, rolloverAllOverdue, user, onSignOut }) {
+        function Sidebar({ boards, activeBoard, setActiveBoard, addBoard, view, setView, sidebarOpen, setSidebarOpen, pomodoroActive, pomodoroTime, isBreak, stopPomodoro, recentlyViewed, overdueTaskCount, rolloverAllOverdue, user, userProfile, onSignOut }) {
             if (!sidebarOpen) {
                 return (
                     <div className="w-16 flex flex-col items-center py-5 sidebar-gentle" style={{borderRight: '1px solid rgba(255,255,255,0.1)'}}>
@@ -2385,15 +2446,15 @@
                         {user && (
                             <div className="flex items-center justify-between pt-3" style={{borderTop: '1px solid rgba(255,255,255,0.1)'}}>
                                 <div className="flex items-center space-x-2">
-                                    {user.photoURL ? (
-                                        <img src={user.photoURL} alt="" className="w-8 h-8 rounded-full" />
+                                    {userProfile?.photoURL ? (
+                                        <img src={userProfile.photoURL} alt="" className="w-8 h-8 rounded-full" />
                                     ) : (
                                         <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{background: 'rgba(255,255,255,0.2)'}}>
                                             <i className="fas fa-user text-white text-sm"></i>
                                         </div>
                                     )}
                                     <span className="text-sm text-white truncate max-w-[120px]" title={user.email}>
-                                        {user.displayName || user.email?.split('@')[0]}
+                                        {userProfile?.displayName || user.displayName || user.email?.split('@')[0]}
                                     </span>
                                 </div>
                                 <button
