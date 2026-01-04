@@ -1273,20 +1273,19 @@
             
             try {
                 const profileRef = db.collection('users').doc(user.uid).collection('profile').doc('info');
-                const profileDoc = await profileRef.get();
                 
-                // Only save if we have a photo and don't have one stored yet
-                if (user.photoURL && (!profileDoc.exists || !profileDoc.data().photoURL)) {
-                    await profileRef.set({
-                        photoURL: user.photoURL,
-                        displayName: user.displayName || user.email?.split('@')[0],
-                        email: user.email,
-                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                    }, { merge: true });
-                    console.log('✅ Profile photo saved to Firestore');
-                }
+                // ALWAYS save the profile data (not just when photoURL exists)
+                const profileData = {
+                    photoURL: user.photoURL || null,
+                    displayName: user.displayName || user.email?.split('@')[0] || 'User',
+                    email: user.email,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                };
+                
+                await profileRef.set(profileData, { merge: true });
+                console.log('✅ Profile saved to Firestore:', profileData);
             } catch (error) {
-                console.error('Error saving user profile:', error);
+                console.error('❌ Error saving user profile:', error);
             }
         };
         
