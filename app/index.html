@@ -677,6 +677,10 @@
                 setError('');
                 try {
                     const provider = new firebase.auth.GoogleAuthProvider();
+                    // ADD THESE LINES - Request profile and email scopes
+                    provider.addScope('profile');
+                    provider.addScope('email');
+                    
                     await auth.signInWithPopup(provider);
                 } catch (err) {
                     console.error('Google sign in error:', err);
