@@ -1272,27 +1272,39 @@
             const [userProfile, setUserProfile] = useState(null);
             const [showProfileSettings, setShowProfileSettings] = useState(false);
 
-        // Save user profile to Firestore
-        const saveUserProfile = async (user) => {
-            if (!user) return;
-            
-            try {
-                const profileRef = db.collection('users').doc(user.uid).collection('profile').doc('info');
+            // Save user profile to Firestore (only on first sign-in)
+            const saveUserProfile = async (user) => {
+                if (!user) return;
                 
-                // ALWAYS save the profile data (not just when photoURL exists)
-                const profileData = {
-                    photoURL: user.photoURL || null,
-                    displayName: user.displayName || user.email?.split('@')[0] || 'User',
-                    email: user.email,
-                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-                };
-                
-                await profileRef.set(profileData, { merge: true });
-                console.log('✅ Profile saved to Firestore:', profileData);
-            } catch (error) {
-                console.error('❌ Error saving user profile:', error);
-            }
-        };
+                try {
+                    const profileRef = db.collection('users').doc(user.uid).collection('profile').doc('info');
+                    
+                    // Check if profile already exists
+                    const profileDoc = await profileRef.get();
+                    
+                    if (!profileDoc.exists) {
+                        // Only create profile if it doesn't exist (first time sign-in)
+                        const profileData = {
+                            photoURL: user.photoURL || null,
+                            displayName: user.displayName || user.email?.split('@')[0] || 'User',
+                            email: user.email,
+                            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        };
+                        
+                        await profileRef.set(profileData);
+                        console.log('✅ New profile created in Firestore:', profileData);
+                    } else {
+                        // Profile exists - just update the email if needed
+                        await profileRef.update({
+                            email: user.email,
+                            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        });
+                        console.log('✅ Profile email updated in Firestore');
+                    }
+                } catch (error) {
+                    console.error('❌ Error saving user profile:', error);
+                }
+            };
         
             // Listen for auth state changes
             useEffect(() => {
